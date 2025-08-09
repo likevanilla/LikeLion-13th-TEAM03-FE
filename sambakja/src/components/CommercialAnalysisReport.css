@@ -1,0 +1,37 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 67px;
+    border-bottom: 2px solid #0479AF;
+}
+
+.Page-info {
+    font-size: 40px;
+    margin-left: 50px;
+}
+
+.Menu {
+    display: flex;
+    justify-content: flex-end;
+    margin-left: auto;
+
+}
+
+.Menu li {
+    margin-right: 30px;
+    font-size: 30px;
+    list-style: none;
+}
+
+.Menu a {
+    text-decoration: none;
+    color: black;
+}
