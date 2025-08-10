@@ -5,7 +5,7 @@ const Nav = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 67px;
+  height: 60px;
   border-bottom: 2px solid #0479af;
 `;
 
@@ -18,6 +18,11 @@ const Menu = styled.ul`
 const PageInfo = styled.div`
   font-size: 40px;
   margin-left: 50px;
+
+  /* img {
+    height: 100%;
+    object-fit: contain;
+  } */
 `;
 
 const List = styled.li`
@@ -31,12 +36,18 @@ const Alink = styled.a`
   color: black;
 `;
 
+const Logo = styled.img`
+  height: 50px;
+  width: auto;
+  display: block;
+`;
+
 export default function HomeHeather() {
   return (
     <div>
       <Nav>
         <PageInfo>
-          <img src={logo} alt="이미지없음"></img>
+          <Logo src={logo} alt="이미지없음"></Logo>
         </PageInfo>
         <Menu>
           <List>
