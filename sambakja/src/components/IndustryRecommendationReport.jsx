@@ -6,6 +6,8 @@ export default function IndustryRecommendationReport() {
 
   useEffect(() => {
     // 목업 데이터
+    // 어떻게 넣어올 지 모르겠음! 나중에 출력값 보고 변경
+    // 업종 추천으로 나오는 지역들이 많아지면 li 태그도 유연하게 변경
     const mockData = {
       industry: "샐러드 전문점",
       industry_explanation:
