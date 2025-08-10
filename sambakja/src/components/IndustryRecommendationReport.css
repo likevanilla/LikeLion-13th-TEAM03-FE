@@ -45,9 +45,6 @@ header {
     font-weight: 100;
 }
 
-.Report-region {
-    font-weight: bold;
-}
 
 article {
     width: 967px;
@@ -56,22 +53,45 @@ article {
     margin: auto;
     background-color: #E7FFC1;
     border-radius: 50px;
+    
+}
+
+.Industry {
+    font-size: 30px;
+    font-weight: bold;
+
+}
+
+.Industry-explanation {
+    font-size: 25px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    
+}
+
+.Report ol {
+    padding-left: 30px;
 }
 
 .Report ol > li {
     font-size: 30px;
     font-weight: bold;
     margin: 10px;
+    color: #0479AF;
+    
 }
 
 .Report ul {
     list-style:disc;
     font-size: 25px;
     margin-left: 30px;
-    margin-bottom: 50px
+    margin-bottom: 50px;
+    
+    
 }
 
 .Report ul > li {
+    
     margin-bottom: 10px;
 }
 
