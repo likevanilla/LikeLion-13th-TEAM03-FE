@@ -13,16 +13,13 @@ const Menu = styled.ul`
   display: flex;
   justify-content: flex-end;
   margin-left: auto;
+  /* margin: 0;
+  padding: 0; */
 `;
 
 const PageInfo = styled.div`
-  font-size: 40px;
-  margin-left: 50px;
-
-  /* img {
-    height: 100%;
-    object-fit: contain;
-  } */
+  /* font-size: 40px;
+  margin-left: 50px; */
 `;
 
 const List = styled.li`
@@ -37,12 +34,12 @@ const Alink = styled.a`
 `;
 
 const Logo = styled.img`
-  height: 50px;
+  height: 70px;
   width: auto;
   display: block;
 `;
 
-export default function HomeHeather() {
+export default function HomeHeader() {
   return (
     <div>
       <Nav>
