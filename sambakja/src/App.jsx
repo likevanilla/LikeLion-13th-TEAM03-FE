@@ -4,6 +4,8 @@ import GlobalStyle from "./GlobalStyle";
 import CommercialAnalysisReport from "./components/commercialAnalysisReport";
 import PolicyGuidePage from "./pages/PolicyGuidePage";
 import AboutPage from "./pages/AboutPage";
+import IndustryRecommendationQuestion from "./components/IndustryRecommendationQuestion";
+import IndustryRecommendationReport from "./components/IndustryRecommendationReport";
 
 function App() {
   return (
@@ -14,6 +16,8 @@ function App() {
         <Route path="/re" element={<CommercialAnalysisReport />} />
         <Route path="/gu" element={<PolicyGuidePage />} />
         <Route path="/ab" element={<AboutPage />} />
+        <Route path="/irq" element={<IndustryRecommendationQuestion />} />
+        <Route path="/irr" element={<IndustryRecommendationReport />} />
       </Routes>
     </BrowserRouter>
   );
