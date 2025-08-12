@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import "./IndustryRecommendationQuestion.css";
 
 export default function IndustryRecommendationQuestion() {
@@ -49,10 +50,10 @@ export default function IndustryRecommendationQuestion() {
         <div className="Page-info">업종 추천 질문</div>
         <ul className="Menu">
           <li>
-            <a href="#">홈</a>
+            <Link to="/">홈</Link>
           </li>
           <li>
-            <a href="#">상권분석</a>
+            <Link to="/commercial-report">상권 분석</Link>
           </li>
           <li>
             <a href="#">정책 안내</a>
@@ -61,7 +62,7 @@ export default function IndustryRecommendationQuestion() {
             <a href="#">서비스소개</a>
           </li>
           <li>
-            <a href="#">문의하기</a>
+            <Link to="/inquiry">문의하기</Link>
           </li>
         </ul>
       </nav>
