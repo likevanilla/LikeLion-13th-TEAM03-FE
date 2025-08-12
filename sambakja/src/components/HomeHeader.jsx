@@ -45,7 +45,7 @@ export default function HomeHeader({ pageInfo }) {
       <Nav>
         <PageInfo>
           {pageInfo ? (
-            <span style={{ fontSize: 40, marginLeft: 10 }}>{pageInfo}</span>
+            <span style={{ fontSize: 40, marginLeft: 50 }}>{pageInfo}</span>
           ) : (
             <Logo src={logo} alt="이미지없음" />
           )}
