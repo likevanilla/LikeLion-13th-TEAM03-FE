@@ -3,6 +3,7 @@ import HomePage from "./pages/HomePage";
 import GlobalStyle from "./GlobalStyle";
 import CommercialAnalysisReport from "./components/commercialAnalysisReport";
 import PolicyGuidePage from "./pages/PolicyGuidePage";
+import AboutPage from "./pages/AboutPage";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/re" element={<CommercialAnalysisReport />} />
         <Route path="/gu" element={<PolicyGuidePage />} />
+        <Route path="/ab" element={<AboutPage />} />
       </Routes>
     </BrowserRouter>
   );
