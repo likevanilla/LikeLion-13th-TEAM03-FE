@@ -91,7 +91,7 @@ export default function PolicyGuidePage() {
 
   const [active, setActive] = useState("전체");
   const url = end[active];
-  const list = mock?.[url] ?? [];
+  const list = mock == null || mock[url] == null ? [] : mock[url];
 
   return (
     <div>
