@@ -39,12 +39,16 @@ const Logo = styled.img`
   display: block;
 `;
 
-export default function HomeHeader() {
+export default function HomeHeader({ pageInfo }) {
   return (
     <div>
       <Nav>
         <PageInfo>
-          <Logo src={logo} alt="이미지없음"></Logo>
+          {pageInfo ? (
+            <span style={{ fontSize: 40, marginLeft: 50 }}>{pageInfo}</span>
+          ) : (
+            <Logo src={logo} alt="이미지없음" />
+          )}
         </PageInfo>
         <Menu>
           <List>
