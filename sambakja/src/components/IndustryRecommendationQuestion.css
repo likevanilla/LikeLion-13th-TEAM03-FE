@@ -71,10 +71,10 @@ nav {
   font-weight: 500;
   color: black;
   margin-bottom: 12px;
-
 }
 
-.required {
+.form-label::after {
+  content: "*";
   color: red;
   margin-left: 2px;
 }

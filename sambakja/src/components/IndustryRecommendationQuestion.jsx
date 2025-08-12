@@ -70,9 +70,7 @@ export default function IndustryRecommendationQuestion() {
       <main className="main-content">
         <form onSubmit={handleSubmit} className="question-form">
           <div className="form-group">
-            <label className="form-label">
-              성별<span className="required">*</span>
-            </label>
+            <label className="form-label">성별</label>
             <div className="gender-buttons">
               <button
                 type="button"
@@ -105,9 +103,7 @@ export default function IndustryRecommendationQuestion() {
           </div>
 
           <div className="form-group">
-            <label className="form-label">
-              사업 종류<span className="required">*</span>
-            </label>
+            <label className="form-label">사업 종류</label>
             <select
               className="form-select"
               value={formData.businessType}
@@ -125,9 +121,7 @@ export default function IndustryRecommendationQuestion() {
           </div>
 
           <div className="form-group">
-            <label className="form-label">
-              업종 대분류<span className="required">*</span>
-            </label>
+            <label className="form-label">업종 대분류</label>
             <select
               className="form-select"
               value={formData.majorCategory}
@@ -144,9 +138,7 @@ export default function IndustryRecommendationQuestion() {
           </div>
 
           <div className="form-group">
-            <label className="form-label">
-              업종 중분류<span className="required">*</span>
-            </label>
+            <label className="form-label">업종 중분류</label>
             <select
               className={`form-select ${
                 !formData.majorCategory ? "disabled" : ""
@@ -173,9 +165,7 @@ export default function IndustryRecommendationQuestion() {
           </div>
 
           <div className="form-group">
-            <label className="form-label">
-              업종 세분류<span className="required">*</span>
-            </label>
+            <label className="form-label">업종 세분류</label>
             <select
               className={`form-select ${
                 !formData.midCategory ? "disabled" : ""
@@ -203,9 +193,7 @@ export default function IndustryRecommendationQuestion() {
           </div>
 
           <div className="form-group">
-            <label className="form-label">
-              사업 형태<span className="required">*</span>
-            </label>
+            <label className="form-label">사업 형태</label>
             <select
               className="form-select"
               value={formData.businessForm}
@@ -222,9 +210,7 @@ export default function IndustryRecommendationQuestion() {
           </div>
 
           <div className="form-group">
-            <label className="form-label">
-              투자 예산<span className="required">*</span>
-            </label>
+            <label className="form-label">투자 예산</label>
             <select
               className="form-select"
               value={formData.investmentBudget}
