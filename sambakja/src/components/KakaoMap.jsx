@@ -10,7 +10,7 @@ export default function KakaoMap(props) {
   const [selectedDong, setSelectedDong] = useState(null); // { id, label }
   const navigate = useNavigate();
 
-  // 의미없는 예시 데이터 (구, 동)
+  // 구 목록
   const guList = useMemo(
     () => [
       { id: "11680", label: "강남구" },
