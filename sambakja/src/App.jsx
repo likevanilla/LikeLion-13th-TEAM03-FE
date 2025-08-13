@@ -3,9 +3,10 @@ import HomePage from "./pages/HomePage";
 import GlobalStyle from "./GlobalStyle";
 import CommercialAnalysisReport from "./components/commercialAnalysisReport";
 import PolicyGuidePage from "./pages/PolicyGuidePage";
+import AboutPage from "./pages/AboutPage";
 import IndustryRecommendationQuestion from "./components/IndustryRecommendationQuestion";
 import IndustryRecommendationReport from "./components/IndustryRecommendationReport";
-import Inquiry from "./components/Inquiry";
+import Map from "./components/KakaoMap";
 
 export default function App() {
   return (
@@ -15,16 +16,10 @@ export default function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/re" element={<CommercialAnalysisReport />} />
         <Route path="/gu" element={<PolicyGuidePage />} />
-        <Route
-          path="/industry-recommendation-question"
-          element={<IndustryRecommendationQuestion />}
-        />
-        <Route
-          path="/industry-report"
-          element={<IndustryRecommendationReport />}
-        />
-        <Route path="/inquiry" element={<Inquiry />} />
-        <Route path="*" element={<Navigate to="/" replace />} />
+        <Route path="/ab" element={<AboutPage />} />
+        <Route path="/irq" element={<IndustryRecommendationQuestion />} />
+        <Route path="/irr" element={<IndustryRecommendationReport />} />
+        <Route path="/map" element={<Map />} />
       </Routes>
     </>
   );
