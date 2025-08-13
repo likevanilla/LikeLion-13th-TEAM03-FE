@@ -6,6 +6,7 @@ import PolicyGuidePage from "./pages/PolicyGuidePage";
 import AboutPage from "./pages/AboutPage";
 import IndustryRecommendationQuestion from "./components/IndustryRecommendationQuestion";
 import IndustryRecommendationReport from "./components/IndustryRecommendationReport";
+import Map from "./components/KakaoMap";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/ab" element={<AboutPage />} />
         <Route path="/irq" element={<IndustryRecommendationQuestion />} />
         <Route path="/irr" element={<IndustryRecommendationReport />} />
+        <Route path="/map" element={<Map />} />
       </Routes>
     </BrowserRouter>
   );
