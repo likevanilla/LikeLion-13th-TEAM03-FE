@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./IndustryRecommendationQuestion.css";
+import HomeHeader from "./HomeHeader";
 
 export default function IndustryRecommendationQuestion() {
   const [formData, setFormData] = useState({
@@ -46,7 +47,7 @@ export default function IndustryRecommendationQuestion() {
 
   return (
     <div className="industry-recommendation-container">
-      <nav>
+      {/* <nav>
         <div className="Page-info">업종 추천 질문</div>
         <ul className="Menu">
           <li>
@@ -65,7 +66,8 @@ export default function IndustryRecommendationQuestion() {
             <Link to="/inquiry">문의하기</Link>
           </li>
         </ul>
-      </nav>
+      </nav> */}
+      <HomeHeader pageInfo="업종 추천 질문" />
 
       <main className="main-content">
         <form onSubmit={handleSubmit} className="question-form">

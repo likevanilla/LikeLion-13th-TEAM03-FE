@@ -61,7 +61,7 @@ export default function HomePage() {
       <SubTitle>아래 항목 중 필요한 서비스를 선택해주세요.</SubTitle>
       <Button>
         <StyledLink
-          to="/#"
+          to="/map"
           style={{ backgroundColor: "#0479AF", color: "#fff" }}
         >
           <Icon>
@@ -70,7 +70,7 @@ export default function HomePage() {
           상권 분석
         </StyledLink>
         <StyledLink
-          to="/#"
+          to="/irq"
           style={{ backgroundColor: "#50ADCE", color: "#fff" }}
         >
           <Icon>
@@ -79,7 +79,7 @@ export default function HomePage() {
           업종 추천
         </StyledLink>
         <StyledLink
-          to="/#"
+          to="/gu"
           style={{ backgroundColor: "#A5EDD7", color: "#fff" }}
         >
           <Icon>

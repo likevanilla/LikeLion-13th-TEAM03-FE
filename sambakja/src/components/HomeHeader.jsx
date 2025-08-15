@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import logo from "../assets/어디가게로고.png";
+import { Link } from "react-router-dom";
 
 const Nav = styled.nav`
   display: flex;
@@ -28,7 +29,7 @@ const List = styled.li`
   list-style: none;
 `;
 
-const Alink = styled.a`
+const Alink = styled(Link)`
   text-decoration: none;
   color: black;
 `;
@@ -52,19 +53,22 @@ export default function HomeHeader({ pageInfo }) {
         </PageInfo>
         <Menu>
           <List>
-            <Alink href="#">홈</Alink>
+            <Alink to="/">홈</Alink>
           </List>
           <List>
-            <Alink href="#">업종 추천</Alink>
+            <Alink to="/map">상권분석</Alink>
           </List>
           <List>
-            <Alink href="#">정책 안내</Alink>
+            <Alink to="/irq">업종 추천</Alink>
           </List>
           <List>
-            <Alink href="#">서비스소개</Alink>
+            <Alink to="/gu">정책 안내</Alink>
           </List>
           <List>
-            <Alink href="#">문의하기</Alink>
+            <Alink to="/ab">서비스소개</Alink>
+          </List>
+          <List>
+            <Alink to="/in">문의하기</Alink>
           </List>
         </Menu>
       </Nav>

@@ -1,5 +1,6 @@
 import "./CommercialAnalysisReport.css";
 import React, { useEffect, useState } from "react";
+import HomeHeader from "./HomeHeader";
 
 // 텍스트 강조 함수 - 키워드는 추후 더 추가
 function HighlightText({ text }) {
@@ -64,7 +65,7 @@ export default function CommercialAnalysisReport() {
 
   return (
     <div>
-      <nav>
+      {/* <nav>
         <div className="Page-info">상권 분석</div>
         <ul className="Menu">
           <li>
@@ -83,7 +84,8 @@ export default function CommercialAnalysisReport() {
             <a href="#">문의하기</a>
           </li>
         </ul>
-      </nav>
+      </nav> */}
+      <HomeHeader pageInfo="상권 분석" />
       <header>
         <div className="Report-region">
           {reportData?.region || "지역 로딩 중..."}
