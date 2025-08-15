@@ -3,6 +3,7 @@ import { Map } from "react-kakao-maps-sdk";
 import "./KakaoMap.css";
 import { guDongMap } from "../data/guDongMap";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function KakaoMap(props) {
   const [searchText, setSearchText] = useState("");
@@ -63,9 +64,9 @@ export default function KakaoMap(props) {
       {/* 우측 상단 네비게이션 */}
       <div className="kmap-nav">
         <nav className="kmap-navInner">
-          <a href="#">홈</a>
-          <a href="#">업종추천</a>
-          <a href="#">정책안내</a>
+          <Link to="/">홈</Link>
+          <Link to="/irq">업종추천</Link>
+          <Link to="/gu">정책안내</Link>
         </nav>
       </div>
 
