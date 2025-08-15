@@ -85,6 +85,10 @@
 	display: flex;
 	flex-wrap: wrap;
 	gap: 8px;
+	justify-content: flex-start;
+	align-items: flex-start;
+	max-height: 300px;
+	overflow-y: auto;
 }
 
 .kmap-itemBtn {
@@ -95,10 +99,27 @@
 	color: #fff;
 	cursor: pointer;
 	font-size: 13px;
+	min-width: 60px;
+	text-align: center;
+	white-space: nowrap;
+	height: 32px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .kmap-itemBtn.selected {
 	background: #0284c7;
+}
+
+.kmap-itemBtn:hover {
+	background: #0284c7;
+	transform: translateY(-1px);
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.kmap-itemBtn:active {
+	transform: translateY(0);
 }
 
 .kmap-backRow {
@@ -113,6 +134,12 @@
 	background: #fff;
 	color: #334155;
 	cursor: pointer;
+	transition: all 0.2s ease;
+}
+
+.kmap-backBtn:hover {
+	background: #f8fafc;
+	border-color: #475569;
 }
 
 .kmap-confirmWrap {
@@ -158,6 +185,13 @@
 	padding: 12px 22px;
 	font-weight: 700;
 	cursor: pointer;
+	transition: all 0.2s ease;
+}
+
+.kmap-primaryBtn:hover {
+	background: #5bb8d1;
+	transform: translateY(-1px);
+	box-shadow: 0 2px 8px rgba(115, 201, 221, 0.3);
 }
 
 .kmap-secondaryBtn {
@@ -168,6 +202,13 @@
 	padding: 12px 22px;
 	font-weight: 700;
 	cursor: pointer;
+	transition: all 0.2s ease;
+}
+
+.kmap-secondaryBtn:hover {
+	background: #9bd4e0;
+	transform: translateY(-1px);
+	box-shadow: 0 2px 8px rgba(173, 223, 235, 0.3);
 }
 
 
