@@ -8,6 +8,7 @@ import IndustryRecommendationQuestion from "./components/IndustryRecommendationQ
 import IndustryRecommendationReport from "./components/IndustryRecommendationReport";
 import Map from "./components/KakaoMap";
 import Inquiry from "./components/Inquiry";
+import PolicyPage from "./pages/PolicyPage";
 
 export default function App() {
   return (
@@ -22,6 +23,7 @@ export default function App() {
         <Route path="/irr" element={<IndustryRecommendationReport />} />
         <Route path="/map" element={<Map />} />
         <Route path="/in" element={<Inquiry />} />
+        <Route path="/po" element={<PolicyPage />} />
       </Routes>
     </>
   );
