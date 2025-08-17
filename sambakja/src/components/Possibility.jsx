@@ -1,13 +1,21 @@
 import { useEffect, useState } from "react";
-import { cardModel, filterActiveWithDeadLine } from "../utils/policy";
-import { ymdToUtc } from "../utils/date";
+import {
+  cardModel,
+  filterActiveWithDeadLine,
+  filterNotExpired,
+  rightCard,
+} from "../utils/policy";
 import styled from "styled-components";
 import axios from "axios";
 
 const Wrap = styled.section`
   /* max-width: 1200px; */
+  width: 100%;
   margin: 0 auto;
   padding: 24px;
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
 `;
 
 const Header = styled.h2`
@@ -17,32 +25,28 @@ const Header = styled.h2`
 `;
 
 const Board = styled.div`
-  /* display: flex;
-  flex-direction: column;
-  gap: 10px;
-  align-items: flex-start; */
-  width: 600px;
+  width: 700px;
   display: grid;
   grid-template-columns: 1fr;
-  gap: 10px;
+  gap: 8px;
 `;
 
 const Card = styled.article`
-  background-color: #0479af;
-  color: #fff;
+  background-color: #e7ffc1;
+  color: black;
   width: 100%;
-  min-height: 100px;
+  min-height: 40px;
   border-radius: 15px;
 `;
 
 const Dday = styled.span`
-  background-color: #e7ffc1;
+  background-color: #0479af;
   border-radius: 5px;
   font-size: 14px;
   padding: 8px 14px;
   width: 40px;
   text-align: center;
-  color: black;
+  color: #fff;
   font-weight: 800;
 `;
 
@@ -66,7 +70,7 @@ const Url = styled.a`
   }
   font-size: 15px;
   width: 80px;
-  height: 35px;
+  height: 20px;
   text-align: center;
   color: black;
   font-weight: 500;
@@ -82,10 +86,37 @@ const Top = styled.div`
   display: flex;
   gap: 15px;
   align-items: center;
-  padding: 10px;
+  padding-top: 10px;
+  padding-left: 10px;
+`;
+
+const Pagination = styled.div`
+  width: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  padding-top: 6px;
+  margin: 0 auto;
+`;
+
+const PageBtn = styled.button`
+  min-width: 32px;
+  height: 32px;
+  border: 0;
+  cursor: pointer;
+`;
+
+const BlockNext = styled.button`
+  width: 36px;
+  height: 32px;
+  border: 0;
+  cursor: pointer;
 `;
 
 const USE_MOCK = true;
+const ROWS_PAGE = 10; //한 페이지 데이터 수
+const PAGES = 5; //페이지 번호는 5개씩
 
 // 목업 데이터
 const MOCK_ITEMS = [
@@ -109,11 +140,11 @@ const MOCK_ITEMS = [
   },
   {
     pbanc_sn: "A3",
-    biz_pbanc_nm: "상시 공고 (필터에서 제외될 항목)",
+    biz_pbanc_nm: "상시 공고",
     rcrt_prgs_yn: "Y",
     pbanc_rcpt_bgng_dt: "20250808",
     pbanc_rcpt_end_dt: null,
-    supt_biz_clsfc: "상시",
+    supt_biz_clsfc: "보육",
     detl_pg_url: "https://example.com/a3",
   },
   {
@@ -133,6 +164,15 @@ const MOCK_ITEMS = [
     pbanc_rcpt_end_dt: "20250910",
     supt_biz_clsfc: "교육",
     detl_pg_url: "https://example.com/a5",
+  },
+  {
+    pbanc_sn: "A6",
+    biz_pbanc_nm: "청년 지원 사업",
+    rcrt_prgs_yn: "Y",
+    pbanc_rcpt_bgng_dt: "20250810",
+    pbanc_rcpt_end_dt: "20250819",
+    supt_biz_clsfc: "교육",
+    detl_pg_url: "https://example.com/a6",
   },
   {
     pbanc_sn: "A7",
@@ -208,34 +248,57 @@ const MOCK_ITEMS = [
   },
 ];
 
-export default function DeadLineList() {
-  const [data, setData] = useState([]);
+export default function Possibility() {
+  const [page, setPage] = useState(1);
+  const [data, setData] = useState([]); //현재 페이지 카드
+  const [total, setTotal] = useState(0); //전체 개수
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  function makePageNumbers(start, end) {
+    const arr = [];
+    for (let p = start; p <= end; p++) arr.push(p);
+    return arr;
+  }
 
   async function load() {
     try {
       setLoading(true);
       setError(null);
 
-      let items = [];
-
       if (USE_MOCK) {
-        items = MOCK_ITEMS;
+        const all = filterNotExpired(MOCK_ITEMS)
+          .map(rightCard)
+          .sort((a, b) =>
+            (a.title || "").localeCompare(b.title || "", "ko", {
+              sensitivity: "base",
+            })
+          );
+
+        setTotal(all.length);
+
+        const start = (page - 1) * ROWS_PAGE;
+        const end = start + ROWS_PAGE;
+        setData(all.slice(start, end));
       } else {
         const res = await axios.get("/startup", {
           params: { pageNo: 1, numOfRows: 10 },
         });
-        items = res.data?.items || [];
+        const items = res.data?.items || res.data?.data?.data || [];
+
+        const all = filterNotExpired(items)
+          .map(rightCard)
+          .sort((a, b) =>
+            (a.title || "").localeCompare(b.title || "", "ko", {
+              sensitivity: "base",
+            })
+          );
+
+        setTotal(all.length);
+        const start = (page - 1) * ROWS_PAGE;
+        const end = start + ROWS_PAGE;
+        setData(all.slice(start, end));
       }
-
-      const active = filterActiveWithDeadLine(items);
-
-      active.sort(
-        (a, b) => ymdToUtc(a.pbanc_rcpt_end_dt) - ymdToUtc(b.pbanc_rcpt_end_dt)
-      );
-
-      setData(active.map(cardModel));
     } catch (e) {
       setError(e);
     } finally {
@@ -245,19 +308,34 @@ export default function DeadLineList() {
 
   useEffect(() => {
     load();
-  }, []);
+  }, [page]);
 
-  if (loading) return <div>불러오는 중..</div>;
+  const totalPages = Math.max(1, Math.ceil(total / ROWS_PAGE));
+  const blockIndex = Math.floor((page - 1) / PAGES);
+  const blockStart = blockIndex * PAGES + 1;
+  const blockEnd = Math.min(blockStart + PAGES - 1, totalPages);
+  const pageNumbers = makePageNumbers(blockStart, blockEnd);
+
+  if (loading)
+    return (
+      <Wrap>
+        <Header>오늘 지원 가능</Header>
+        <div>불러오는 중..</div>
+      </Wrap>
+    );
   if (error)
     return (
-      <div>
-        오류가 발생했습니다.<button onClick={load}>다시 시도</button>
-      </div>
+      <Wrap>
+        <Header>오늘 지원 가능</Header>
+        <div>
+          오류가 발생했습니다.<button onClick={load}>다시 시도</button>
+        </div>
+      </Wrap>
     );
 
   return (
     <Wrap>
-      <Header>마감 임박(D-7이내)</Header>
+      <Header>오늘 지원 가능</Header>
       <Board>
         {data.map((card) => (
           <Card key={card.id}>
@@ -276,6 +354,21 @@ export default function DeadLineList() {
           </Card>
         ))}
       </Board>
+      <Pagination>
+        {pageNumbers.map((p) => {
+          return (
+            <PageBtn key={p} onClick={() => setPage(p)}>
+              {p}
+            </PageBtn>
+          );
+        })}
+        <BlockNext
+          disabled={blockEnd === totalPages}
+          onClick={() => setPage(Math.min(totalPages, blockEnd + 1))}
+        >
+          &gt;
+        </BlockNext>
+      </Pagination>
     </Wrap>
   );
 }

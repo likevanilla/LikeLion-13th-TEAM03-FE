@@ -40,3 +40,33 @@ export function cardModel(p) {
     ddayText: ddayLabel(p.pbanc_rcpt_end_dt),
   };
 }
+
+export function filterNotExpired(items = []) {
+  const now = new Date();
+  const todayUtc = Date.UTC(now.getFullYear(), now.getMonth(), now.getDate());
+  return items.filter((p) => {
+    if (!p || p.rcrt_prgs_yn !== "Y") return false;
+    const endUtc = ymdToUtc(p.pbanc_rcpt_end_dt);
+    return endUtc === null || endUtc >= todayUtc;
+  });
+}
+
+export function ddayLabelOrAlways(endYmd) {
+  const d = dday(endYmd);
+  if (d == null) return "상시";
+  if (d < 0) return null;
+  return `D-${d}`;
+}
+
+export function rightCard(p) {
+  return {
+    id: p.pbanc_sn,
+    title: p.biz_pbanc_nm,
+    period: `${fmtFromYmd(p.pbanc_rcpt_bgng_dt)} - ${fmtFromYmd(
+      p.pbanc_rcpt_end_dt
+    )}`,
+    category: p.supt_biz_clsfc || "-",
+    url: p.detl_pg_url,
+    ddayText: ddayLabelOrAlways(p.pbanc_rcpt_end_dt),
+  };
+}
