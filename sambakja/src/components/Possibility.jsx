@@ -74,12 +74,19 @@ const Url = styled.a`
   text-align: center;
   color: black;
   font-weight: 500;
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20px;
+  margin-bottom: 10px;
 `;
 
 const Bottom = styled.div`
   display: flex;
   gap: 30px;
   align-items: center;
+  width: 100%;
 `;
 
 const Top = styled.div`

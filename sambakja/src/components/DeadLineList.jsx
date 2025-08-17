@@ -70,6 +70,12 @@ const Url = styled.a`
   text-align: center;
   color: black;
   font-weight: 500;
+  margin-left: auto;
+  margin-right: 20px;
+  margin-bottom: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 const Bottom = styled.div`
