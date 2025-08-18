@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
-import { filterNotExpired, rightCard } from "../utils/policy";
+import { rightCard } from "../utils/policy";
 import styled from "styled-components";
 import { api } from "../apis/api";
 
 const Wrap = styled.section`
-  /* max-width: 1200px; */
   width: 100%;
   margin: 0 auto;
   padding: 24px;
@@ -116,13 +115,13 @@ const BlockNext = styled.button`
   cursor: pointer;
 `;
 
-const ROWS_PAGE = 10; //한 페이지 데이터 수
+const ROWS_PAGE = 8; //한 페이지 데이터 수
 const PAGES = 5; //페이지 번호는 5개씩
 
-export default function Possibility() {
+export default function GuideList() {
   const [page, setPage] = useState(1);
   const [data, setData] = useState([]); //현재 페이지 카드
-  const [total, setTotal] = useState(0); //전체 개수
+  const [totalPages, setTotalPages] = useState(1); //전체 개수
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -132,25 +131,23 @@ export default function Possibility() {
     return arr;
   }
 
-  async function load() {
+  async function load(p = page) {
+    setLoading(true);
+    setError(null);
     try {
-      setLoading(true);
-      setError(null);
+      const uiPage = Number.isFinite(p) ? p : 1;
+      const serverPage = Math.max(0, uiPage - 1);
 
       const res = await api.get("/api/guide/startup", {
-        responseType: "json",
+        params: { page: serverPage, size: ROWS_PAGE },
       });
 
-      let items = res.data.data;
+      const { content = [], totalPages = 1 } = res?.data ?? {};
 
-      const all = filterNotExpired(items)
-        .map(rightCard)
-        .sort((a, b) => a.title.localeCompare(b.title));
+      const mapped = (Array.isArray(content) ? content : []).map(rightCard);
 
-      setTotal(all.length);
-      const start = (page - 1) * ROWS_PAGE;
-      const end = start + ROWS_PAGE;
-      setData(all.slice(start, end));
+      setData(mapped);
+      setTotalPages(Number.isFinite(totalPages) ? totalPages : 1);
     } catch (e) {
       setError(e);
     } finally {
@@ -159,35 +156,19 @@ export default function Possibility() {
   }
 
   useEffect(() => {
-    load();
+    load(page);
   }, [page]);
 
-  const totalPages = Math.max(1, Math.ceil(total / ROWS_PAGE));
   const blockIndex = Math.floor((page - 1) / PAGES);
   const blockStart = blockIndex * PAGES + 1;
   const blockEnd = Math.min(blockStart + PAGES - 1, totalPages);
   const pageNumbers = makePageNumbers(blockStart, blockEnd);
 
-  if (loading)
-    return (
-      <Wrap>
-        <Header>오늘 지원 가능</Header>
-        <div>불러오는 중..</div>
-      </Wrap>
-    );
-  if (error)
-    return (
-      <Wrap>
-        <Header>오늘 지원 가능</Header>
-        <div>
-          오류가 발생했습니다.<button onClick={load}>다시 시도</button>
-        </div>
-      </Wrap>
-    );
-
   return (
     <Wrap>
-      <Header>오늘 지원 가능</Header>
+      <Header>정책 리스트</Header>
+      {loading && <p>불러오는 중..</p>}
+      {error && <p>에러가 발생했습니다.</p>}
       <Board>
         {data.map((card) => (
           <Card key={card.id}>
@@ -207,13 +188,24 @@ export default function Possibility() {
         ))}
       </Board>
       <Pagination>
-        {pageNumbers.map((p) => {
-          return (
-            <PageBtn key={p} onClick={() => setPage(p)}>
-              {p}
-            </PageBtn>
-          );
-        })}
+        <PageBtn
+          onClick={() => setPage((p) => Math.max(1, p - 1))}
+          disabled={page <= 1}
+        >
+          이전
+        </PageBtn>
+        {pageNumbers.map((p) => (
+          <PageBtn key={p} onClick={() => setPage(p)} disabled={p === page}>
+            {p}
+          </PageBtn>
+        ))}
+        <PageBtn
+          onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
+          disabled={page >= totalPages}
+        >
+          다음
+        </PageBtn>
+
         <BlockNext
           disabled={blockEnd === totalPages}
           onClick={() => setPage(Math.min(totalPages, blockEnd + 1))}

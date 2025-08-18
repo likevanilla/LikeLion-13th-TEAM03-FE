@@ -1,6 +1,6 @@
 import DeadLineList from "../components/DeadLineList";
+import GuideList from "../components/GuideList";
 import HomeHeader from "../components/HomeHeader";
-import Possibility from "../components/Possibility";
 import styled from "styled-components";
 
 const Card = styled.div`
@@ -27,7 +27,7 @@ export default function PolicyPage() {
       <Page>
         <Card>
           <DeadLineList />
-          <Possibility />
+          <GuideList />
         </Card>
       </Page>
     </div>

@@ -15,13 +15,6 @@ export function filterActiveWithDeadLine(items = [], withinDays = 7) {
   });
 }
 
-// export function filterSeven(items = [], withinDays = 7) {
-//   return items.filter((p) => {
-//     const d = dday(p.pbanc_rcpt_end_dt);
-//     return d != null && d >= 0 && d <= withinDays;
-//   });
-// }
-
 export function ddayLabel(endYmd) {
   const d = dday(endYmd);
   if (d === null || d < 0) return null;
@@ -41,20 +34,10 @@ export function cardModel(p) {
   };
 }
 
-export function filterNotExpired(items = []) {
-  const now = new Date();
-  const todayUtc = Date.UTC(now.getFullYear(), now.getMonth(), now.getDate());
-  return items.filter((p) => {
-    if (!p || p.rcrt_prgs_yn !== "Y") return false;
-    const endUtc = ymdToUtc(p.pbanc_rcpt_end_dt);
-    return endUtc === null || endUtc >= todayUtc;
-  });
-}
-
-export function ddayLabelOrAlways(endYmd) {
+export function rightDdayLabel(endYmd) {
   const d = dday(endYmd);
   if (d == null) return "상시";
-  if (d < 0) return null;
+  if (d < 0) return "마감";
   return `D-${d}`;
 }
 
@@ -67,6 +50,6 @@ export function rightCard(p) {
     )}`,
     category: p.supt_biz_clsfc || "-",
     url: p.detl_pg_url,
-    ddayText: ddayLabelOrAlways(p.pbanc_rcpt_end_dt),
+    ddayText: rightDdayLabel(p.pbanc_rcpt_end_dt),
   };
 }
