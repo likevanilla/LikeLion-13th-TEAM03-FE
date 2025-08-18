@@ -1,5 +1,5 @@
-import React, { useMemo, useState } from "react";
-import { Map } from "react-kakao-maps-sdk";
+import React, { useMemo, useState, useEffect } from "react";
+import { Map, Polygon } from "react-kakao-maps-sdk";
 import "./KakaoMap.css";
 import { guDongMap } from "../data/guDongMapWithCoords";
 import { useNavigate } from "react-router-dom";
@@ -17,6 +17,13 @@ export default function KakaoMap(props) {
     lat: 37.566826,
     lng: 126.9786567,
   });
+  const [guPolygons, setGuPolygons] = useState([]);
+
+  useEffect(() => {
+    fetch("/seoul_gu_polygons.json")
+      .then((res) => res.json())
+      .then((data) => setGuPolygons(data));
+  }, []);
 
   // 페이지 이동을 위한 react-router-dom 훅
   const navigate = useNavigate();
@@ -77,7 +84,25 @@ export default function KakaoMap(props) {
     <div className="kmap-container">
       {/* 지도 영역 */}
       <div className="kmap-mapWrapper">
-        <Map center={mapCenter} className="kmap-map" level={3} />
+        <Map center={mapCenter} className="kmap-map" level={8}>
+          {guPolygons.map((gu) => (
+            <Polygon
+              key={gu.id}
+              path={gu.polygon}
+              strokeColor="#0278AE"
+              strokeOpacity={0.8}
+              strokeWeight={2}
+              fillColor={selectedGuId === gu.id ? "#EF476F" : "#cce6ff"} // 선택된 구 색상 변경
+              fillOpacity={0.5}
+              onClick={() => {
+                // 구 클릭 시 색상 변경 및 동 목록으로 전환
+                setSelectedGuId(gu.id);
+                setSearchText("");
+                setSelectedDong(null);
+              }}
+            />
+          ))}
+        </Map>
       </div>
 
       {/* 우측 상단 네비게이션 메뉴 */}
