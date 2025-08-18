@@ -1,12 +1,7 @@
 import { useEffect, useState } from "react";
-import {
-  cardModel,
-  filterActiveWithDeadLine,
-  filterNotExpired,
-  rightCard,
-} from "../utils/policy";
+import { filterNotExpired, rightCard } from "../utils/policy";
 import styled from "styled-components";
-import axios from "axios";
+import { api } from "../apis/api";
 
 const Wrap = styled.section`
   /* max-width: 1200px; */
@@ -35,7 +30,7 @@ const Card = styled.article`
   background-color: #e7ffc1;
   color: black;
   width: 100%;
-  min-height: 40px;
+  min-height: 30px;
   border-radius: 15px;
 `;
 
@@ -121,139 +116,8 @@ const BlockNext = styled.button`
   cursor: pointer;
 `;
 
-const USE_MOCK = true;
 const ROWS_PAGE = 10; //한 페이지 데이터 수
 const PAGES = 5; //페이지 번호는 5개씩
-
-// 목업 데이터
-const MOCK_ITEMS = [
-  {
-    pbanc_sn: "A1",
-    biz_pbanc_nm: "관악×SK 오픈이노베이션",
-    rcrt_prgs_yn: "Y",
-    pbanc_rcpt_bgng_dt: "20250704",
-    pbanc_rcpt_end_dt: "20250817",
-    supt_biz_clsfc: "시설·공간·보육",
-    detl_pg_url: "https://example.com/a1",
-  },
-  {
-    pbanc_sn: "A2",
-    biz_pbanc_nm: "창업 보육지원",
-    rcrt_prgs_yn: "Y",
-    pbanc_rcpt_bgng_dt: "20250615",
-    pbanc_rcpt_end_dt: "20250830",
-    supt_biz_clsfc: "보육",
-    detl_pg_url: "https://example.com/a2",
-  },
-  {
-    pbanc_sn: "A3",
-    biz_pbanc_nm: "상시 공고",
-    rcrt_prgs_yn: "Y",
-    pbanc_rcpt_bgng_dt: "20250808",
-    pbanc_rcpt_end_dt: null,
-    supt_biz_clsfc: "보육",
-    detl_pg_url: "https://example.com/a3",
-  },
-  {
-    pbanc_sn: "A4",
-    biz_pbanc_nm: "어제 마감 (필터에서 제외될 항목)",
-    rcrt_prgs_yn: "Y",
-    pbanc_rcpt_bgng_dt: "20250309",
-    pbanc_rcpt_end_dt: "20250401",
-    supt_biz_clsfc: "멘토링",
-    detl_pg_url: "https://example.com/a4",
-  },
-  {
-    pbanc_sn: "A5",
-    biz_pbanc_nm: "모집중 아님 (필터에서 제외될 항목)",
-    rcrt_prgs_yn: "N",
-    pbanc_rcpt_bgng_dt: "20250817",
-    pbanc_rcpt_end_dt: "20250910",
-    supt_biz_clsfc: "교육",
-    detl_pg_url: "https://example.com/a5",
-  },
-  {
-    pbanc_sn: "A6",
-    biz_pbanc_nm: "청년 지원 사업",
-    rcrt_prgs_yn: "Y",
-    pbanc_rcpt_bgng_dt: "20250810",
-    pbanc_rcpt_end_dt: "20250819",
-    supt_biz_clsfc: "교육",
-    detl_pg_url: "https://example.com/a6",
-  },
-  {
-    pbanc_sn: "A7",
-    biz_pbanc_nm: "이러쿵 저러쿵",
-    rcrt_prgs_yn: "Y",
-    pbanc_rcpt_bgng_dt: "20250812",
-    pbanc_rcpt_end_dt: "20250910",
-    supt_biz_clsfc: "교육",
-    detl_pg_url: "https://example.com/a7",
-  },
-  {
-    pbanc_sn: "A8",
-    biz_pbanc_nm: "이러쿵 저러쿵",
-    rcrt_prgs_yn: "Y",
-    pbanc_rcpt_bgng_dt: "20250812",
-    pbanc_rcpt_end_dt: "20250820",
-    supt_biz_clsfc: "교육",
-    detl_pg_url: "https://example.com/a8",
-  },
-  {
-    pbanc_sn: "A9",
-    biz_pbanc_nm: "이러쿵 저러쿵",
-    rcrt_prgs_yn: "Y",
-    pbanc_rcpt_bgng_dt: "20250812",
-    pbanc_rcpt_end_dt: "20250820",
-    supt_biz_clsfc: "교육",
-    detl_pg_url: "https://example.com/a9",
-  },
-  {
-    pbanc_sn: "A10",
-    biz_pbanc_nm: "이러쿵 저러쿵",
-    rcrt_prgs_yn: "Y",
-    pbanc_rcpt_bgng_dt: "20250812",
-    pbanc_rcpt_end_dt: "20250820",
-    supt_biz_clsfc: "교육",
-    detl_pg_url: "https://example.com/a10",
-  },
-  {
-    pbanc_sn: "A11",
-    biz_pbanc_nm: "이러쿵 저러쿵",
-    rcrt_prgs_yn: "Y",
-    pbanc_rcpt_bgng_dt: "20250812",
-    pbanc_rcpt_end_dt: "20250820",
-    supt_biz_clsfc: "교육",
-    detl_pg_url: "https://example.com/a11",
-  },
-  {
-    pbanc_sn: "A12",
-    biz_pbanc_nm: "이러쿵 저러쿵",
-    rcrt_prgs_yn: "Y",
-    pbanc_rcpt_bgng_dt: "20250812",
-    pbanc_rcpt_end_dt: "20250910",
-    supt_biz_clsfc: "교육",
-    detl_pg_url: "https://example.com/a12",
-  },
-  {
-    pbanc_sn: "A13",
-    biz_pbanc_nm: "이러쿵 저러쿵",
-    rcrt_prgs_yn: "Y",
-    pbanc_rcpt_bgng_dt: "20250812",
-    pbanc_rcpt_end_dt: "20250910",
-    supt_biz_clsfc: "교육",
-    detl_pg_url: "https://example.com/a13",
-  },
-  {
-    pbanc_sn: "A14",
-    biz_pbanc_nm: "이러쿵 저러쿵",
-    rcrt_prgs_yn: "Y",
-    pbanc_rcpt_bgng_dt: "20250812",
-    pbanc_rcpt_end_dt: "20250910",
-    supt_biz_clsfc: "교육",
-    detl_pg_url: "https://example.com/a14",
-  },
-];
 
 export default function Possibility() {
   const [page, setPage] = useState(1);
@@ -273,39 +137,20 @@ export default function Possibility() {
       setLoading(true);
       setError(null);
 
-      if (USE_MOCK) {
-        const all = filterNotExpired(MOCK_ITEMS)
-          .map(rightCard)
-          .sort((a, b) =>
-            (a.title || "").localeCompare(b.title || "", "ko", {
-              sensitivity: "base",
-            })
-          );
+      const res = await api.get("/api/guide/startup", {
+        responseType: "json",
+      });
 
-        setTotal(all.length);
+      let items = res.data.data;
 
-        const start = (page - 1) * ROWS_PAGE;
-        const end = start + ROWS_PAGE;
-        setData(all.slice(start, end));
-      } else {
-        const res = await axios.get("/startup", {
-          params: { pageNo: 1, numOfRows: 10 },
-        });
-        const items = res.data?.items || res.data?.data?.data || [];
+      const all = filterNotExpired(items)
+        .map(rightCard)
+        .sort((a, b) => a.title.localeCompare(b.title));
 
-        const all = filterNotExpired(items)
-          .map(rightCard)
-          .sort((a, b) =>
-            (a.title || "").localeCompare(b.title || "", "ko", {
-              sensitivity: "base",
-            })
-          );
-
-        setTotal(all.length);
-        const start = (page - 1) * ROWS_PAGE;
-        const end = start + ROWS_PAGE;
-        setData(all.slice(start, end));
-      }
+      setTotal(all.length);
+      const start = (page - 1) * ROWS_PAGE;
+      const end = start + ROWS_PAGE;
+      setData(all.slice(start, end));
     } catch (e) {
       setError(e);
     } finally {
