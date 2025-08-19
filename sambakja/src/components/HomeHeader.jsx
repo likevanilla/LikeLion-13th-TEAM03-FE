@@ -62,7 +62,7 @@ export default function HomeHeader({ pageInfo }) {
             <Alink to="/irq">업종 추천</Alink>
           </List>
           <List>
-            <Alink to="/gu">정책 안내</Alink>
+            <Alink to="/po">정책 안내</Alink>
           </List>
           <List>
             <Alink to="/ab">서비스소개</Alink>

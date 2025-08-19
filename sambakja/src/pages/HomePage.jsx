@@ -79,7 +79,7 @@ export default function HomePage() {
           업종 추천
         </StyledLink>
         <StyledLink
-          to="/gu"
+          to="/po"
           style={{ backgroundColor: "#A5EDD7", color: "#fff" }}
         >
           <Icon>
