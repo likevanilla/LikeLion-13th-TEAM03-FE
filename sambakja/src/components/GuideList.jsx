@@ -8,7 +8,7 @@ const Wrap = styled.section`
   margin: 0 auto;
   padding: 24px;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   flex-direction: column;
 `;
 
@@ -16,21 +16,30 @@ const Header = styled.h2`
   font-size: 28px;
   font-weight: 800;
   margin: 8px 0 20px;
+  text-align: center;
+  color: gray;
 `;
 
 const Board = styled.div`
-  width: 700px;
-  display: grid;
-  grid-template-columns: 1fr;
+  /* width: 700px; */
+  display: flex;
+  flex-wrap: wrap;
   gap: 8px;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
 `;
 
-const Card = styled.article`
+const Card = styled.div`
   background-color: #e7ffc1;
   color: black;
-  width: 100%;
-  min-height: 30px;
   border-radius: 15px;
+  display: flex;
+  /* flex: 1 1 320px; */
+  /* justify-content: space-evenly; */
+  flex-direction: column;
+  width: 500px;
+  height: 200px;
 `;
 
 const Dday = styled.span`
@@ -38,7 +47,7 @@ const Dday = styled.span`
   border-radius: 5px;
   font-size: 14px;
   padding: 8px 14px;
-  width: 40px;
+  width: 70px;
   text-align: center;
   color: #fff;
   font-weight: 800;
@@ -46,7 +55,9 @@ const Dday = styled.span`
 
 const Title = styled.h3`
   font-size: 18px;
-  margin: 0 0 6px;
+  /* margin: 0 0 6px; */
+  padding-right: 10px;
+  padding-top: 10px;
 `;
 
 const Info = styled.div`
@@ -72,8 +83,8 @@ const Url = styled.a`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  margin-right: 20px;
-  margin-bottom: 10px;
+  margin-right: 30px;
+  /* margin-bottom: 10px; */
 `;
 
 const Bottom = styled.div`
@@ -99,6 +110,7 @@ const Pagination = styled.div`
   gap: 6px;
   padding-top: 6px;
   margin: 0 auto;
+  margin-top: 40px;
 `;
 
 const PageBtn = styled.button`
@@ -115,7 +127,7 @@ const BlockNext = styled.button`
   cursor: pointer;
 `;
 
-const ROWS_PAGE = 8; //한 페이지 데이터 수
+const ROWS_PAGE = 9; //한 페이지 데이터 수
 const PAGES = 5; //페이지 번호는 5개씩
 
 export default function GuideList() {
@@ -166,7 +178,7 @@ export default function GuideList() {
 
   return (
     <Wrap>
-      <Header>정책 리스트</Header>
+      <Header>원하시는 정책 정보를 확인하세요.</Header>
       {loading && <p>불러오는 중..</p>}
       {error && <p>에러가 발생했습니다.</p>}
       <Board>

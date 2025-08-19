@@ -1,4 +1,3 @@
-import DeadLineList from "../components/DeadLineList";
 import GuideList from "../components/GuideList";
 import HomeHeader from "../components/HomeHeader";
 import styled from "styled-components";
@@ -26,7 +25,6 @@ export default function PolicyPage() {
       </Home>
       <Page>
         <Card>
-          <DeadLineList />
           <GuideList />
         </Card>
       </Page>
