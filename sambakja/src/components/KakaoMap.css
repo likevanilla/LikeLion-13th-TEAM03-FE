@@ -84,8 +84,10 @@
 .kmap-list {
 	display: flex;
 	flex-wrap: wrap;
-	gap: 8px;
-	justify-content: flex-start;
+	justify-content: space-between;
+	/* 세로 간격 유지, 가로 간격은 균등 분배 */
+	row-gap: 8px;
+	column-gap: 0;
 	align-items: flex-start;
 	max-height: 300px;
 	overflow-y: auto;
