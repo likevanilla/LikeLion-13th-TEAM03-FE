@@ -1,3 +1,4 @@
+import HomeHeader from "./HomeHeader";
 import "./IndustryRecommendationReport.css";
 import React, { useEffect, useState } from "react";
 
@@ -30,26 +31,7 @@ export default function IndustryRecommendationReport() {
 
   return (
     <div>
-      <nav>
-        <div className="Page-info">업종 추천 리포트</div>
-        <ul className="Menu">
-          <li>
-            <a href="#">홈</a>
-          </li>
-          <li>
-            <a href="#">상권 분석</a>
-          </li>
-          <li>
-            <a href="#">정책 안내</a>
-          </li>
-          <li>
-            <a href="#">서비스소개</a>
-          </li>
-          <li>
-            <a href="#">문의하기</a>
-          </li>
-        </ul>
-      </nav>
+      <HomeHeader pageInfo="업종 추천 리포트" />
       <header>
         <div>업종 추천 분석 리포트 출력 완료되었습니다!</div>
       </header>
