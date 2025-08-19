@@ -14,14 +14,12 @@ const Wrap = styled.section`
 
 const Header = styled.h2`
   font-size: 28px;
-  font-weight: 800;
-  margin: 8px 0 20px;
+  margin: 20px 0 30px 0;
   text-align: center;
   color: gray;
 `;
 
 const Board = styled.div`
-  /* width: 700px; */
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
@@ -34,12 +32,11 @@ const Card = styled.div`
   background-color: #e7ffc1;
   color: black;
   border-radius: 15px;
-  display: flex;
-  /* flex: 1 1 320px; */
-  /* justify-content: space-evenly; */
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: 45% 40%;
+  box-sizing: border-box;
   width: 500px;
-  height: 200px;
+  height: 150px;
 `;
 
 const Dday = styled.span`
@@ -47,7 +44,8 @@ const Dday = styled.span`
   border-radius: 5px;
   font-size: 14px;
   padding: 8px 14px;
-  width: 70px;
+  width: 80px;
+  box-sizing: border-box;
   text-align: center;
   color: #fff;
   font-weight: 800;
@@ -55,9 +53,9 @@ const Dday = styled.span`
 
 const Title = styled.h3`
   font-size: 18px;
-  /* margin: 0 0 6px; */
   padding-right: 10px;
   padding-top: 10px;
+  width: 100%;
 `;
 
 const Info = styled.div`
@@ -74,8 +72,8 @@ const Url = styled.a`
     cursor: pointer;
   }
   font-size: 15px;
-  width: 80px;
-  height: 20px;
+  width: 100px;
+  height: 40px;
   text-align: center;
   color: black;
   font-weight: 500;
@@ -84,7 +82,6 @@ const Url = styled.a`
   align-items: center;
   justify-content: center;
   margin-right: 30px;
-  /* margin-bottom: 10px; */
 `;
 
 const Bottom = styled.div`
@@ -92,6 +89,7 @@ const Bottom = styled.div`
   gap: 30px;
   align-items: center;
   width: 100%;
+  padding-top: 30px;
 `;
 
 const Top = styled.div`
@@ -127,7 +125,7 @@ const BlockNext = styled.button`
   cursor: pointer;
 `;
 
-const ROWS_PAGE = 9; //한 페이지 데이터 수
+const ROWS_PAGE = 12; //한 페이지 데이터 수
 const PAGES = 5; //페이지 번호는 5개씩
 
 export default function GuideList() {
@@ -147,11 +145,10 @@ export default function GuideList() {
     setLoading(true);
     setError(null);
     try {
-      const uiPage = Number.isFinite(p) ? p : 1;
-      const serverPage = Math.max(0, uiPage - 1);
+      const currentPage = p || 1;
 
       const res = await api.get("/api/guide/startup", {
-        params: { page: serverPage, size: ROWS_PAGE },
+        params: { page: currentPage, size: ROWS_PAGE },
       });
 
       const { content = [], totalPages = 1 } = res?.data ?? {};
@@ -159,7 +156,7 @@ export default function GuideList() {
       const mapped = (Array.isArray(content) ? content : []).map(rightCard);
 
       setData(mapped);
-      setTotalPages(Number.isFinite(totalPages) ? totalPages : 1);
+      setTotalPages(totalPages || 1);
     } catch (e) {
       setError(e);
     } finally {
