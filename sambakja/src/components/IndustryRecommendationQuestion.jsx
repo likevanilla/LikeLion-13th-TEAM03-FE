@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./IndustryRecommendationQuestion.css";
 import HomeHeader from "./HomeHeader";
 
 export default function IndustryRecommendationQuestion() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     gender: "선택안함",
     businessType: "",
@@ -43,30 +44,19 @@ export default function IndustryRecommendationQuestion() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("폼 데이터:", formData);
+    const params = new URLSearchParams({
+      sex: formData.gender,
+      type_large: formData.majorCategory,
+      type_medium: formData.midCategory,
+      type_small: formData.minorCategory,
+      budget: formData.investmentBudget,
+    });
+
+    navigate(`/irr?${params.toString()}`);
   };
 
   return (
     <div className="industry-recommendation-container">
-      {/* <nav>
-        <div className="Page-info">업종 추천 질문</div>
-        <ul className="Menu">
-          <li>
-            <Link to="/">홈</Link>
-          </li>
-          <li>
-            <Link to="/commercial-report">상권 분석</Link>
-          </li>
-          <li>
-            <a href="#">정책 안내</a>
-          </li>
-          <li>
-            <a href="#">서비스소개</a>
-          </li>
-          <li>
-            <Link to="/inquiry">문의하기</Link>
-          </li>
-        </ul>
-      </nav> */}
       <HomeHeader pageInfo="업종 추천 질문" />
 
       <main className="main-content">
@@ -103,7 +93,7 @@ export default function IndustryRecommendationQuestion() {
               </button>
             </div>
           </div>
-
+          {/* 
           <div className="form-group">
             <label className="form-label">사업 종류</label>
             <select
@@ -120,7 +110,7 @@ export default function IndustryRecommendationQuestion() {
               <option value="도소매업">도소매업</option>
               <option value="음식점업">음식점업</option>
             </select>
-          </div>
+          </div> */}
 
           <div className="form-group">
             <label className="form-label">업종 대분류</label>
@@ -194,7 +184,7 @@ export default function IndustryRecommendationQuestion() {
             </select>
           </div>
 
-          <div className="form-group">
+          {/* <div className="form-group">
             <label className="form-label">사업 형태</label>
             <select
               className="form-select"
@@ -209,7 +199,7 @@ export default function IndustryRecommendationQuestion() {
               <option value="법인사업자">법인사업자</option>
               <option value="프랜차이즈">프랜차이즈</option>
             </select>
-          </div>
+          </div> */}
 
           <div className="form-group">
             <label className="form-label">투자 예산</label>
