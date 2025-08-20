@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import GlobalStyle from "./GlobalStyle";
-import CommercialAnalysisReport from "./components/commercialAnalysisReport";
+import CommercialAnalysisReport from "./components/CommercialAnalysisReport";
 import PolicyGuidePage from "./pages/PolicyGuidePage";
 import AboutPage from "./pages/AboutPage";
 import IndustryRecommendationQuestion from "./components/IndustryRecommendationQuestion";
