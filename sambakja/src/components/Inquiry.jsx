@@ -20,6 +20,7 @@ export default function Inquiry() {
 
   async function postInquiry() {
     try {
+      if (loading) return;
       const res = await api.post("/api/inquiry", {
         name: name.trim(),
         phone: phoneNum.trim(),
@@ -144,8 +145,12 @@ export default function Inquiry() {
             </div>
 
             <div className="button-container">
-              <button type="submit" className="submit-button">
-                문의하기
+              <button
+                type="submit"
+                className="submit-button"
+                disabled={loading}
+              >
+                {loading ? "전송 중.." : " 문의하기"}
               </button>
             </div>
           </form>

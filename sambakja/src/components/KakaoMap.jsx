@@ -199,9 +199,14 @@ export default function KakaoMap() {
                 className="kmap-primaryBtn"
                 type="button"
                 onClick={() =>
-                  navigate("/re", {
-                    state: { guId: selectedGuId, dongId: selectedDong.id },
-                  })
+                  navigate(
+                    `/re?gu=${encodeURIComponent(
+                      selectedGuLabel
+                    )}&dong=${encodeURIComponent(selectedDong.label)}`,
+                    {
+                      state: { guId: selectedGuId, dongId: selectedDong.id },
+                    }
+                  )
                 }
               >
                 네, 작성해주세요.
