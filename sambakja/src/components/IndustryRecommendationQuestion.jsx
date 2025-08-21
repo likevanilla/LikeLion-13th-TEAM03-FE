@@ -187,7 +187,7 @@ export default function IndustryRecommendationQuestion() {
               }
               required
             >
-              <option value="">투자 에산을 선택해주세요</option>
+              <option value="">투자 예산을 선택해주세요</option>
               {budgetList.map((b) => (
                 <option key={b} value={b}>
                   {b}
