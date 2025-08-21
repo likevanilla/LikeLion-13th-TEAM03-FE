@@ -1,33 +1,45 @@
 import HomeHeader from "./HomeHeader";
 import "./IndustryRecommendationReport.css";
 import React, { useEffect, useState } from "react";
+import { api } from "../apis/api";
+import { useSearchParams } from "react-router-dom";
 
 export default function IndustryRecommendationReport() {
   const [reportData, setReportData] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [sp] = useSearchParams();
+  const sex = sp.get("sex");
+  const type_large = sp.get("type_large");
+  const type_medium = sp.get("type_medium");
+  const type_small = sp.get("type_small");
+  const budget = sp.get("budget");
+
+  async function postReport() {
+    try {
+      setLoading(true);
+      setError("");
+      const res = await api.post("/api/biz/recommendation", {
+        sex,
+        type_large,
+        type_medium,
+        type_small,
+        budget,
+      });
+      const data = res.data;
+      setReportData(data);
+      console.log(reportData);
+    } catch (e) {
+      setError("데이터 전송 실패");
+      console.error(e);
+    } finally {
+      setLoading(false);
+    }
+  }
 
   useEffect(() => {
-    // 목업 데이터
-    // 어떻게 넣어올 지 모르겠음! 나중에 출력값 보고 변경
-    // 업종 추천으로 나오는 지역들이 많아지면 li 태그도 유연하게 변경
-    const mockData = {
-      industry: "샐러드 전문점",
-      industry_explanation:
-        "샐러드 전문점은 젊은 층과 스포츠 층에서 다이어트 식단으로 수요가 높으므로",
-      region: ["강동구 성내동", "노원구 공릉2동"],
-    };
-
-    // 추후 변경 후 코드
-    // useEffect(() => {
-    //   fetch("/api/report") // 실제 백엔드 API 주소
-    //     .then((res) => res.json())
-    //     .then((data) => setReportData(data))
-    //     .catch((error) => console.error("데이터 불러오기 실패:", error));
-    // }, []);
-
-    setTimeout(() => {
-      setReportData(mockData);
-    }, 500);
-  }, []);
+    postReport();
+  }, [sex, type_large, type_medium, type_small, budget]);
 
   return (
     <div>
@@ -38,28 +50,31 @@ export default function IndustryRecommendationReport() {
       <article>
         <div className="Report">
           <div className="Industry">
-            {reportData?.industry || "업종 로딩 중..."}
+            {reportData?.type_small || "업종 로딩 중..."}
           </div>
           <div className="Industry-explanation">
-            {reportData?.industry_explanation || "로딩 중..."}
+            {reportData?.biz_feature || "로딩 중..."}
           </div>
           <ol>
-            <li>{reportData?.region[0] || ""}</li>
+            <li>
+              {reportData?.recommendation[0]?.region || "상권 로딩 중..."}
+            </li>
             <ul>
-              <li>
-                JYP 엔터와 한체대가 위치해 있어 비교적 임대료가 높지만 많은 수요
-                예상
-              </li>
+              <li>{reportData?.recommendation[0]?.유동인구 || "로딩 중..."}</li>
+              <li>{reportData?.recommendation[0]?.직장인구 || "로딩 중..."}</li>
+              <li>{reportData?.recommendation[0]?.연령층 || "로딩 중..."}</li>
+              <li>{reportData?.recommendation[0]?.임대료 || "로딩 중..."}</li>
+              <li>{reportData?.recommendation[0]?.상권특징 || "로딩 중..."}</li>
             </ul>
-            <li>{reportData?.region[1] || ""}</li>
+            <li>
+              {reportData?.recommendation[1]?.region || "상권 로딩 중..."}
+            </li>
             <ul>
-              <li>
-                서울 외곽 지역이지만 서울과기대, 서울여대, 삼육대 등 대학가 다수
-              </li>
-              <li>
-                태릉 선수촌, 태릉 골프장 위치해 있으므로 스포츠인 수요 높을
-                것으로 예상
-              </li>
+              <li>{reportData?.recommendation[1]?.유동인구 || "로딩 중..."}</li>
+              <li>{reportData?.recommendation[1]?.직장인구 || "로딩 중..."}</li>
+              <li>{reportData?.recommendation[1]?.연령층 || "로딩 중..."}</li>
+              <li>{reportData?.recommendation[1]?.임대료 || "로딩 중..."}</li>
+              <li>{reportData?.recommendation[1]?.상권특징 || "로딩 중..."}</li>
             </ul>
           </ol>
         </div>
