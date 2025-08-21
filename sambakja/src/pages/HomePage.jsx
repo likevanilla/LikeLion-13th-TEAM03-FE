@@ -11,16 +11,19 @@ const Container = styled.div`
 `;
 
 const Title = styled.p`
-  font-size: 70px;
+  font-size: 65px;
   font-weight: 800;
-  margin-top: 100px;
-  margin-bottom: 50px;
+  margin-top: 60px;
+  margin-bottom: 30px;
+  font-family: "Pretendard-SemiBold";
+  text-shadow: 2px 2px 2px gray;
 `;
 
 const SubTitle = styled.p`
-  font-size: 35px;
-  color: gray;
+  font-size: 30px;
+  color: #a6a1a1;
   margin-bottom: 50px;
+  font-family: "Pretendard-ExtraLight";
 `;
 
 const Button = styled.div`
@@ -29,6 +32,7 @@ const Button = styled.div`
   flex-wrap: wrap;
   gap: 40px;
   width: 100%;
+  margin-bottom: 60px;
 `;
 
 const StyledLink = styled(Link)`
@@ -41,24 +45,35 @@ const StyledLink = styled(Link)`
   font-weight: bold;
   padding: 40px 20px;
   border-radius: 10px;
-  width: 250px;
-  height: 300px;
+  width: 291px;
+  height: 390px;
+  font-family: "Pretendard-Bold";
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 `;
 
 const Icon = styled.span`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 80px;
-  height: 100px;
-  margin-bottom: 60px;
+  width: 255px;
+  height: 245px;
+  margin-bottom: 40px;
+  & > img {
+    width: 100%;
+    height: 100%;
+    /* object-fit: contain; */
+    display: block;
+  }
 `;
 
 export default function HomePage() {
   return (
     <Container>
       <HomeHeader style={{ position: "sticky", top: 0 }} />
-      <Title>당신의 창업을 '어디가게'가 응원합니다.</Title>
+      <Title>
+        당신의 창업을 <span style={{ color: "#0479AF" }}>'어디가게'</span>가
+        응원합니다.
+      </Title>
       <SubTitle>아래 항목 중 필요한 서비스를 선택해주세요.</SubTitle>
       <Button>
         <StyledLink

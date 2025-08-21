@@ -14,7 +14,7 @@ const Nav = styled.nav`
   max-width: 1000px;
   border-bottom: none;
   border-radius: 50px;
-  box-shadow: 0px 5px 10px 0px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   margin-top: 50px;
   width: 100%;
   margin: 0 auto;
