@@ -4,6 +4,7 @@ import HomeHeader from "../components/HomeHeader";
 import report from "../assets/report.png";
 import recommend from "../assets/recommend.png";
 import guide from "../assets/guide.png";
+import Footer from "../components/Footer";
 
 const Container = styled.div`
   text-align: center;
@@ -56,7 +57,7 @@ const Icon = styled.span`
 export default function HomePage() {
   return (
     <Container>
-      <HomeHeader />
+      <HomeHeader style={{ position: "sticky", top: 0 }} />
       <Title>당신의 창업을 '어디가게'가 응원합니다.</Title>
       <SubTitle>아래 항목 중 필요한 서비스를 선택해주세요.</SubTitle>
       <Button>
@@ -88,6 +89,7 @@ export default function HomePage() {
           정책 안내
         </StyledLink>
       </Button>
+      <Footer />
     </Container>
   );
 }

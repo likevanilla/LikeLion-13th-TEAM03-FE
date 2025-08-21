@@ -21,7 +21,7 @@ export default function PolicyPage() {
   return (
     <div>
       <Home>
-        <HomeHeader pageInfo="정책 안내" />
+        <HomeHeader />
       </Home>
       <Page>
         <Card>

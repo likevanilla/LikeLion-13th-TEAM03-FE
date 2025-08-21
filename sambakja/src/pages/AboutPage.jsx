@@ -61,7 +61,7 @@ const Icon = styled.img`
 export default function AboutPage() {
   return (
     <Wrapper>
-      <HomeHeader pageInfo="서비스 소개" />
+      <HomeHeader />
       <div>
         <Text>
           <div>복잡한 창업 정보, 누구보다 쉽게!</div>

@@ -1,5 +1,5 @@
-import "./CommercialAnalysisReport.css";
-import React, { useEffect, useState } from "react";
+import "/src/style/CommercialAnalysisReport.css";
+import { useEffect, useState } from "react";
 import HomeHeader from "./HomeHeader";
 import { useSearchParams } from "react-router-dom";
 import { api } from "../apis/api";
@@ -92,7 +92,7 @@ export default function CommercialAnalysisReport() {
 
   return (
     <div>
-      <HomeHeader pageInfo="상권 분석" />
+      <HomeHeader />
       <header>
         <div className="Report-region">
           {reportData?.region || "지역 로딩 중..."}

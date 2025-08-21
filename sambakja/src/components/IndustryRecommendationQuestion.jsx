@@ -1,6 +1,6 @@
-import React, { useMemo, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import "./IndustryRecommendationQuestion.css";
+import { useMemo, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "/src/style/IndustryRecommendationQuestion.css";
 import HomeHeader from "./HomeHeader";
 import { industryList } from "../data/industryList";
 import { budgetList } from "../data/industryList";
@@ -71,7 +71,7 @@ export default function IndustryRecommendationQuestion() {
 
   return (
     <div className="industry-recommendation-container">
-      <HomeHeader pageInfo="업종 추천 질문" />
+      <HomeHeader />
 
       <main className="main-content">
         <form onSubmit={handleSubmit} className="question-form">

@@ -1,6 +1,6 @@
 import HomeHeader from "./HomeHeader";
-import "./IndustryRecommendationReport.css";
-import React, { useEffect, useState } from "react";
+import "/src/style/IndustryRecommendationReport.css";
+import { useEffect, useState } from "react";
 import { api } from "../apis/api";
 import { useSearchParams } from "react-router-dom";
 
@@ -43,7 +43,7 @@ export default function IndustryRecommendationReport() {
 
   return (
     <div>
-      <HomeHeader pageInfo="업종 추천 리포트" />
+      <HomeHeader />
       <header>
         <div>업종 추천 분석 리포트 출력 완료되었습니다!</div>
       </header>
