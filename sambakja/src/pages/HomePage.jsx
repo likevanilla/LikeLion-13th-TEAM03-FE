@@ -49,6 +49,11 @@ const StyledLink = styled(Link)`
   height: 390px;
   font-family: "Pretendard-Bold";
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+
+  &:hover {
+    filter: brightness(0.85);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  }
 `;
 
 const Icon = styled.span`
