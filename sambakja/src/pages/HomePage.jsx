@@ -10,9 +10,9 @@ const Container = styled.div`
   text-align: center;
 `;
 
-const Title = styled.h1`
+const Title = styled.p`
   font-size: 70px;
-  font-weight: bold;
+  font-weight: 800;
   margin-top: 100px;
   margin-bottom: 50px;
 `;
