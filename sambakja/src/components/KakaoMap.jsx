@@ -211,6 +211,7 @@ export default function KakaoMap() {
                     setSelectedGuId(item.id);
                     setSelectedDong(null);
                     setSearchText("");
+                    handleGuClick(item.id);
                     if (item.lat && item.lng)
                       setMapCenter({ lat: item.lat, lng: item.lng });
                   }
