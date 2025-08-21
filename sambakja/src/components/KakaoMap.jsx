@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useMemo, useRef } from "react";
 import { Map, Polygon } from "react-kakao-maps-sdk";
 import "./KakaoMap.css";
 import { guDongMap } from "../data/guDongMapWithCoords";
@@ -15,7 +15,10 @@ export default function KakaoMap() {
     lng: 126.9786567,
   });
   const [guPolygons, setGuPolygons] = useState([]);
+  const [markers, setMarkers] = useState([]);
+  const [labels, setLabels] = useState([]);
 
+  const mapRef = useRef(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -23,6 +26,54 @@ export default function KakaoMap() {
       .then((res) => res.json())
       .then((data) => setGuPolygons(data));
   }, []);
+
+  // 구 클릭 시 해당 구에 속하는 행정동 마커 표시
+  const handleGuClick = (guId) => {
+    // 구에 해당하는 행정동 목록 가져오기
+    const selectedGu = guDongMap[guId];
+
+    // 이전에 표시된 마커들 삭제
+    markers.forEach((marker) => marker.setMap(null));
+    labels.forEach((label) => label.setMap(null));
+
+    const newMarkers = [];
+    const newLabels = [];
+
+    // 새로운 마커 표시
+    selectedGu.forEach((dong) => {
+      const marker = new window.kakao.maps.Marker({
+        position: new window.kakao.maps.LatLng(dong.lat, dong.lng),
+        map: mapRef.current,
+        zIndex: 10,
+      });
+
+      // 행정동 마커 위에 라벨 추가
+      const label = new window.kakao.maps.CustomOverlay({
+        position: new window.kakao.maps.LatLng(dong.lat, dong.lng),
+        content: `<div style="padding:5px; background-color:white; border-radius:5px; box-shadow: 0 0 3px rgba(0,0,0,0.2); font-size:12px;">${dong.label}</div>`, // 동 이름을 라벨로 표시
+        xAnchor: 0.5,
+        yAnchor: 0, // 마커 바로 위에 라벨이 위치하도록 설정
+      });
+
+      label.setMap(mapRef.current); // 라벨을 지도에 추가
+
+      newMarkers.push(marker);
+      newLabels.push(label);
+    });
+
+    // 새로운 마커들을 상태에 저장
+    setMarkers(newMarkers);
+    setLabels(newLabels);
+
+    // 구 중심으로 지도 이동
+    const guInfo = seoulGuList.find((g) => g.id === guId);
+    if (guInfo) {
+      setMapCenter({ lat: guInfo.lat, lng: guInfo.lng });
+      mapRef.current.setLevel(6);
+    }
+
+    setSelectedGuId(guId);
+  };
 
   // 검색창에서 동 검색 시 결과 생성
   const searchResults = useMemo(() => {
@@ -72,28 +123,32 @@ export default function KakaoMap() {
 
       {/* 지도 영역 */}
       <div className="kmap-mapWrapper">
-        <Map center={mapCenter} className="kmap-map" level={8} draggable={true}>
-          {guPolygons.map((gu) => (
-            <Polygon
-              key={gu.id}
-              path={gu.polygon}
-              strokeColor="#0278AE"
-              strokeOpacity={0.8}
-              strokeWeight={2}
-              fillColor={selectedGuId === gu.id ? "#EF476F" : "#cce6ff"}
-              fillOpacity={0.5}
-              onClick={() => {
-                // 구 폴리곤 클릭
-                setSelectedGuId(gu.id);
-                setSelectedDong(null);
-                setSearchText("");
-                const guInfo = seoulGuList.find((g) => g.id === gu.id);
-                if (guInfo?.lat && guInfo?.lng) {
-                  setMapCenter({ lat: guInfo.lat, lng: guInfo.lng });
-                }
-              }}
-            />
-          ))}
+        <Map
+          center={mapCenter}
+          className="kmap-map"
+          level={8}
+          draggable={true}
+          ref={mapRef}
+        >
+          {guPolygons.map((gu) => {
+            const guCenter = { lat: gu.lat, lng: gu.lng };
+
+            return (
+              <React.Fragment key={gu.id}>
+                <Polygon
+                  path={gu.polygon}
+                  strokeColor="#0278AE"
+                  strokeOpacity={0.8}
+                  strokeWeight={2}
+                  fillColor={selectedGuId === gu.id ? "#EF476F" : "#cce6ff"}
+                  fillOpacity={0.5}
+                  onClick={() => {
+                    handleGuClick(gu.id);
+                  }}
+                />
+              </React.Fragment>
+            );
+          })}
         </Map>
       </div>
 
@@ -178,6 +233,8 @@ export default function KakaoMap() {
                 setSelectedDong(null);
                 setSearchText("");
                 setMapCenter({ lat: 37.566826, lng: 126.9786567 });
+                markers.forEach((marker) => marker.setMap(null));
+                labels.forEach((label) => label.setMap(null));
               }}
             >
               이전 페이지로 돌아가기
