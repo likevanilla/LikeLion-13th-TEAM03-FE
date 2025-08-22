@@ -74,8 +74,9 @@
   padding: 24px;
   grid-column: 1;
   grid-row: 1 / span 2;
-  max-width: 540px;
+  max-width: 600px;
   min-height: 875px;
+  box-shadow: 7px 6px 12px -7px #333;
 }
 
 .Industry-style {
@@ -86,6 +87,7 @@
   padding: 24px;
   grid-column: 2;
   grid-row: 1;
+  box-shadow: 7px 6px 12px -7px #333;
 }
 
 .Locational {
@@ -97,6 +99,7 @@
   padding: 24px;
   grid-column: 2;
   grid-row: 2;
+  box-shadow: 7px 6px 12px -7px #333;
 }
 
 /* 페이지 스타일 */
@@ -109,7 +112,7 @@
 
 .Report-grid {
   display: grid;
-  grid-template-columns: minmax(300px, 540px) minmax(300px, 600px);
+  grid-template-columns: minmax(300px, 600px) minmax(300px, 600px);
   gap: 24px;
   align-items: start;
   justify-content: center;
