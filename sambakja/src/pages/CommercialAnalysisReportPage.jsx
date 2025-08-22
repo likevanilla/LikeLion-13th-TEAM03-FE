@@ -6,7 +6,7 @@ import { api } from "../apis/api";
 import { Link } from "react-router-dom";
 import Population from "../components/Population";
 import Industry from "../components/Industry";
-import SiteFeature from "../components/SiteFeature";
+import Locational from "../components/LocationalCharacteristics";
 
 function normalizeReport(raw) {
   const r = raw ?? {};
@@ -15,11 +15,11 @@ function normalizeReport(raw) {
     region: r.region ?? "",
     population: rep["인구"] ?? {},
     industry: rep["업종"] ?? {},
-    siteFeature: rep["입지_특성"] ?? "",
+    locational: rep["입지_특성"] ?? "",
   };
 }
 
-const INITIAL = { region: "", population: {}, industry: {}, siteFeature: "" };
+const INITIAL = { region: "", population: {}, industry: {}, locational: "" };
 
 export default function CommercialAnalysisReportPage() {
   const [reportData, setReportData] = useState(INITIAL);
@@ -56,15 +56,20 @@ export default function CommercialAnalysisReportPage() {
   // }, []);
 
   return (
-    <div>
+    <div className="Report-wrapper">
       <HomeHeader />
       <div className="Report-region">
         {reportData?.region || "지역 로딩 중..."}
       </div>
       <div className="Text">상권 분석 리포트 출력 완료되었어요!</div>
-      <Population population={reportData.population} />
-      <Industry industry={reportData.industry} />
-      <SiteFeature text={reportData.siteFeature} />
+      <div className="Report-grid">
+        <Population population={reportData.population} />
+
+        <div className="Right-column">
+          <Industry industry={reportData.industry} />
+          <Locational text={reportData.locational} />
+        </div>
+      </div>
       <Link to="/map" className="Back">
         다른 상권 분석 리포트를 작성해드릴까요?
       </Link>

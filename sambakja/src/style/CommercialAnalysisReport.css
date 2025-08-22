@@ -1,3 +1,4 @@
+/* 전체 스타일 */
 .Report-region {
   text-align: center;
   font-size: 30px;
@@ -13,17 +14,10 @@
   font-family: "Pretendard-ExtraLight";
 }
 
-.Population {
-  background-color: #a5edd7;
-  border-radius: 20px;
-  max-width: 540px;
-  min-height: 860px;
-  margin-left: 40px;
-}
-
 .Title {
   text-align: center;
   padding-top: 30px;
+  font-size: 25px;
   font-family: "Pretendard-Light";
 }
 
@@ -46,56 +40,23 @@
   font-family: "Pretendard-Light";
 }
 
-/* article {
-  width: 967px;
-  height: 100%;
-  min-height: 550px;
-  margin: auto;
-  background-color: #e7ffc1;
-  border-radius: 50px;
-} */
-
-/* .Population ol > li {
-  font-size: 30px;
-  font-weight: bold;
-  margin: 10px;
-}
-
-.Population ul {
-  list-style: disc;
-  font-size: 25px;
-  margin-left: 30px;
-  margin-bottom: 50px;
-}
-
-.Population ul > li {
-  margin-bottom: 10px;
-}
-
-.Population {
-  padding-left: 50px;
-  padding-top: 30px;
-  padding-bottom: 30px;
-} */
-
-.Title {
-  font-size: 30px;
-  font-family: "Pretendard-Light";
-}
-
 .Back {
-  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 16px 24px;
   background-color: #50adce;
-  color: white;
+  color: #fff;
   border: none;
   border-radius: 8px;
   font-size: 16px;
   cursor: pointer;
   transition: background-color 0.2s ease;
-  margin-top: 50px;
-  margin-left: 25%;
+  margin: 40px auto 0;
   text-decoration: none;
+  width: fit-content;
+  margin-bottom: 60px;
+  margin-top: 70px;
 }
 
 .Back:hover {
@@ -105,6 +66,61 @@
 .Back:active {
   transform: translateY(1px);
 }
+
+/* 컴포넌트별 스타일 */
+.Population {
+  background-color: #a5edd7;
+  border-radius: 20px;
+  padding: 24px;
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  max-width: 540px;
+  min-height: 875px;
+}
+
+.Industry-style {
+  background-color: #e7ffc1;
+  max-width: 600px;
+  min-height: 500px;
+  border-radius: 20px;
+  padding: 24px;
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.Locational {
+  background-color: #0479af;
+  max-width: 600px;
+  min-height: 300px;
+  border-radius: 20px;
+  color: #fff;
+  padding: 24px;
+  grid-column: 2;
+  grid-row: 2;
+}
+
+/* 페이지 스타일 */
+
+.Report-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.Report-grid {
+  display: grid;
+  grid-template-columns: minmax(300px, 540px) minmax(300px, 600px);
+  gap: 24px;
+  align-items: start;
+  justify-content: center;
+}
+
+.Right-column {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
 /* 
 @media screen and (min-width: 768px) {
 } */
