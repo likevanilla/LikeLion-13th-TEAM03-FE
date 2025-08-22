@@ -196,11 +196,13 @@ export default function KakaoMap() {
                     setSelectedGuId(item.guId);
                     setSelectedDong({ id: item.dongId, label: item.dongLabel });
                     setSearchText("");
+                    mapRef.current.setLevel(4);
                     if (item.guLat && item.guLng)
                       setMapCenter({ lat: item.guLat, lng: item.guLng });
                   } else if (selectedGuId) {
                     // 구 선택 후 동 클릭
                     setSelectedDong({ id: key, label });
+                    mapRef.current.setLevel(4);
                     const found = guDongMap[selectedGuId]?.find(
                       (d) => d.id === key
                     );
@@ -233,7 +235,6 @@ export default function KakaoMap() {
                 setSelectedGuId(null);
                 setSelectedDong(null);
                 setSearchText("");
-                setMapCenter({ lat: 37.566826, lng: 126.9786567 });
                 markers.forEach((marker) => marker.setMap(null));
                 labels.forEach((label) => label.setMap(null));
               }}
