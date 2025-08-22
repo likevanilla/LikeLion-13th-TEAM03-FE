@@ -10,7 +10,7 @@ export default function Inquiry() {
   const [message, setMessage] = useState("");
   const [emailDomain, setEmailDomain] = useState("");
   const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [ok, setOk] = useState(false);
 
   const handleEmailDomainChange = (e) => {
@@ -150,7 +150,7 @@ export default function Inquiry() {
                 className="submit-button"
                 disabled={loading}
               >
-                {loading ? "전송 중.." : " 문의하기"}
+                문의하기
               </button>
             </div>
           </form>

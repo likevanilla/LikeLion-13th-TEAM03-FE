@@ -21,13 +21,13 @@ const Nav = styled.nav`
   margin-top: 40px;
   padding-right: 20px;
 
-  @media screen and (max-width: 767px) {
+  /* @media screen and (max-width: 767px) {
     display: flex;
     /* justify-content: space-between;
     align-items: center; */
-    flex-direction: column;
-    border-bottom: none;
-  }
+  /* flex-direction: column;
+    border-bottom: none; */
+  /* } */
 `;
 
 const Menu = styled.ul`
@@ -53,12 +53,12 @@ const List = styled.li`
     border-bottom: #0479af;
   }
 
-  @media screen and (max-width: 767px) {
+  /* @media screen and (max-width: 767px) {
     display: flex;
     /* justify-content: space-between;
     align-items: center; */
-    flex-direction: column;
-  }
+  /* flex-direction: column;
+  } */
 `;
 
 const Alink = styled(NavLink)`
@@ -69,13 +69,18 @@ const Alink = styled(NavLink)`
     border-bottom: 2px solid #0479af;
   }
 
-  @media screen and (max-width: 767px) {
+  &:hover {
+    /* background-color: #e7ffc1; */
+    text-shadow: 2px 2px 2px gray;
+  }
+
+  /* @media screen and (max-width: 767px) {
     display: flex;
     /* justify-content: space-between;
     align-items: center; */
-    flex-direction: column;
+  /* flex-direction: column;
     border-bottom: none;
-  }
+  } */
 `;
 
 const Logo = styled.img`
