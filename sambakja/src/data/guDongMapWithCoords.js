@@ -280,6 +280,7 @@ export const guDongMap = {
       lat: 37.537541,
       lng: 127.005165,
     },
+
     {
       id: "11170690",
       label: "서빙고동",
@@ -782,6 +783,7 @@ export const guDongMap = {
       lat: 37.58944,
       lng: 127.016817,
     },
+
     {
       id: "11290780",
       label: "장위3동",
@@ -1572,18 +1574,21 @@ export const guDongMap = {
       lat: 37.554779,
       lng: 126.810453,
     },
+
     {
       id: "11500630",
       label: "방화1동",
       lat: 37.550968,
       lng: 126.849614,
     },
+
     {
       id: "11500640",
       label: "방화2동",
       lat: 37.550968,
       lng: 126.849614,
     },
+
     {
       id: "11500641",
       label: "방화3동",
@@ -2598,3 +2603,7 @@ export const guDongMap = {
     },
   ],
 };
+
+Object.keys(guDongMap).forEach((districtKey) => {
+  guDongMap[districtKey].sort((a, b) => a.label.localeCompare(b.label));
+});
