@@ -95,7 +95,7 @@ export default function PolicyGuidePage() {
 
   return (
     <div>
-      <HomeHeader pageInfo="정책 안내" />
+      <HomeHeader />
       <Category>
         {Object.keys(end).map((ca) => (
           <Btn key={ca} onClick={() => setActive(ca)}>
