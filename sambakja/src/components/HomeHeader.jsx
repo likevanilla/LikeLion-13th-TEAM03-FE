@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import logo from "../assets/어디가게로고.png";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation, matchPath } from "react-router-dom";
 
 const Header = styled.div`
   position: sticky;
@@ -20,6 +20,7 @@ const Nav = styled.nav`
   margin: 0 auto;
   margin-top: 40px;
   padding-right: 20px;
+  background-color: #fff;
 
   /* @media screen and (max-width: 767px) {
     display: flex;
@@ -49,10 +50,6 @@ const List = styled.li`
   justify-content: center;
   align-items: center;
 
-  &:has(a.active) {
-    border-bottom: #0479af;
-  }
-
   /* @media screen and (max-width: 767px) {
     display: flex;
     /* justify-content: space-between;
@@ -70,7 +67,6 @@ const Alink = styled(NavLink)`
   }
 
   &:hover {
-    /* background-color: #e7ffc1; */
     text-shadow: 2px 2px 2px gray;
   }
 
@@ -89,35 +85,37 @@ const Logo = styled.img`
   display: block;
 `;
 
+function MultiRouteLink({ to, patterns = [], children }) {
+  const { pathname } = useLocation();
+  const isActive = patterns.some(
+    (p) =>
+      !!matchPath(
+        typeof p === "string" ? { path: p, end: !p.endsWith("/*") } : p,
+        pathname
+      )
+  );
+  return (
+    <Alink to={to} className={isActive ? "active" : undefined}>
+      {children}
+    </Alink>
+  );
+}
+
 export default function HomeHeader() {
   return (
     <Header>
       <Nav>
         <Menu>
           <List>
-            <Alink
-              to="/"
-              end
-              className={({ isActive }) => (isActive ? "active" : undefined)}
-            >
+            <Alink to="/" end>
               홈
             </Alink>
           </List>
           <List>
-            <Alink
-              to="/ab"
-              className={({ isActive }) => (isActive ? "active" : undefined)}
-            >
-              서비스 소개
-            </Alink>
+            <Alink to="/ab">서비스 소개</Alink>
           </List>
           <List>
-            <Alink
-              to="/in"
-              className={({ isActive }) => (isActive ? "active" : undefined)}
-            >
-              문의하기
-            </Alink>
+            <Alink to="/in">문의하기</Alink>
           </List>
           <List>
             <Alink to="/">
@@ -125,28 +123,17 @@ export default function HomeHeader() {
             </Alink>
           </List>
           <List>
-            <Alink
-              to="/map"
-              className={({ isActive }) => (isActive ? "active" : undefined)}
-            >
+            <MultiRouteLink to="/map" patterns={["/map", "/re"]}>
               상권 분석
-            </Alink>
+            </MultiRouteLink>
           </List>
           <List>
-            <Alink
-              to="/irq"
-              className={({ isActive }) => (isActive ? "active" : undefined)}
-            >
+            <MultiRouteLink to="/irq" patterns={["/irq", "irr"]}>
               업종 추천
-            </Alink>
+            </MultiRouteLink>
           </List>
           <List>
-            <Alink
-              to="/po"
-              className={({ isActive }) => (isActive ? "active" : undefined)}
-            >
-              정책 안내
-            </Alink>
+            <Alink to="/po">정책 안내</Alink>
           </List>
         </Menu>
       </Nav>
