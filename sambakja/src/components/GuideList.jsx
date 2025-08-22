@@ -16,7 +16,8 @@ const Header = styled.h2`
   font-size: 28px;
   margin: 20px 0 30px 0;
   text-align: center;
-  color: gray;
+  color: #a6a1a1;
+  font-family: "Pretendard-ExtraLight";
 `;
 
 const Board = styled.div`
@@ -37,6 +38,8 @@ const Card = styled.div`
   box-sizing: border-box;
   width: 500px;
   height: 150px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15), 0 2px 2px rgba(0, 0, 0, 0.15),
+    0 4px 4px rgba(0, 0, 0, 0.15), 0 8px 8px rgba(0, 0, 0, 0.15);
 `;
 
 const Dday = styled.span`
@@ -48,7 +51,7 @@ const Dday = styled.span`
   box-sizing: border-box;
   text-align: center;
   color: #fff;
-  font-weight: 800;
+  font-family: "Pretendard-Bold";
 `;
 
 const Title = styled.h3`
@@ -70,6 +73,8 @@ const Url = styled.a`
   background-color: #a5edd7;
   &:hover {
     cursor: pointer;
+    background-color: #8bd0bb;
+    border: 2px solid #0479af;
   }
   font-size: 15px;
   width: 100px;
