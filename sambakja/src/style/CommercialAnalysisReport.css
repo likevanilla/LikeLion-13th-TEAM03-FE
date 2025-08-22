@@ -1,25 +1,61 @@
-header {
+.Report-region {
   text-align: center;
   font-size: 30px;
-  margin-top: 70px;
+  margin-top: 50px;
+  font-family: "Pretendard-Bold";
+}
+
+.Text {
+  text-align: center;
+  font-size: 20px;
+  margin-top: 15px;
   margin-bottom: 30px;
-  font-weight: 100;
+  font-family: "Pretendard-ExtraLight";
 }
 
-.Report-region {
-  font-weight: bold;
+.Population {
+  background-color: #a5edd7;
+  border-radius: 20px;
+  max-width: 540px;
+  min-height: 860px;
+  margin-left: 40px;
 }
 
-article {
+.Title {
+  text-align: center;
+  padding-top: 30px;
+  font-family: "Pretendard-Light";
+}
+
+.Content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-left: 20px;
+}
+
+.Content-title {
+  font-size: 30px;
+  font-family: "Pretendard-SemiBold";
+  margin-top: 40px;
+}
+
+.Content-description {
+  margin-top: 20px;
+  font-size: 20px;
+  font-family: "Pretendard-Light";
+}
+
+/* article {
   width: 967px;
   height: 100%;
   min-height: 550px;
   margin: auto;
   background-color: #e7ffc1;
   border-radius: 50px;
-}
+} */
 
-.Population ol > li {
+/* .Population ol > li {
   font-size: 30px;
   font-weight: bold;
   margin: 10px;
@@ -40,6 +76,11 @@ article {
   padding-left: 50px;
   padding-top: 30px;
   padding-bottom: 30px;
+} */
+
+.Title {
+  font-size: 30px;
+  font-family: "Pretendard-Light";
 }
 
 .Back {
@@ -50,10 +91,9 @@ article {
   border: none;
   border-radius: 8px;
   font-size: 16px;
-  font-weight: 600;
   cursor: pointer;
   transition: background-color 0.2s ease;
-  margin-top: 20px;
+  margin-top: 50px;
   margin-left: 25%;
   text-decoration: none;
 }
