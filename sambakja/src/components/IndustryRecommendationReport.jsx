@@ -2,7 +2,22 @@ import HomeHeader from "./HomeHeader";
 import "./IndustryRecommendationReport.css";
 import React, { useEffect, useState } from "react";
 import { api } from "../apis/api";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, Link } from "react-router-dom";
+// import BizFeature from"../components/BizFeature";
+// import FirstRegion from "../components/FirstRegion";
+// import SecondRegion from "../components/SecondRegion";
+
+// function normalizeReport(raw) {
+//   const r = raw ?? {};
+//   const rep = r.report ?? {};
+//   return {
+//     bizFeature: r.biz_feature ?? "",
+//     firstRegion: rep["첫 번째 상권"] ?? {},
+//     secondRegion: rep["두 번째 상권"] ?? {},
+//   };
+// }
+
+// const INITIAL = { biz_feature: "", firstRegion: {}, secondRegion: {} };
 
 export default function IndustryRecommendationReport() {
   const [reportData, setReportData] = useState(null);
@@ -26,11 +41,12 @@ export default function IndustryRecommendationReport() {
         type_small,
         budget,
       });
-      const data = res.data;
+      const data = normalizeReport(res.data);
       setReportData(data);
       console.log(reportData);
     } catch (e) {
       setError("데이터 전송 실패");
+      // setReportData(INITIAL);
       console.error(e);
     } finally {
       setLoading(false);
@@ -42,43 +58,21 @@ export default function IndustryRecommendationReport() {
   }, [sex, type_large, type_medium, type_small, budget]);
 
   return (
-    <div>
-      <HomeHeader pageInfo="업종 추천 리포트" />
-      <header>
-        <div>업종 추천 분석 리포트 출력 완료되었습니다!</div>
-      </header>
-      <article>
-        <div className="Report">
-          <div className="Industry">
-            {reportData?.type_small || "업종 로딩 중..."}
-          </div>
-          <div className="Industry-explanation">
-            {reportData?.biz_feature || "로딩 중..."}
-          </div>
-          <ol>
-            <li>
-              {reportData?.recommendation[0]?.region || "상권 로딩 중..."}
-            </li>
-            <ul>
-              <li>{reportData?.recommendation[0]?.유동인구 || "로딩 중..."}</li>
-              <li>{reportData?.recommendation[0]?.직장인구 || "로딩 중..."}</li>
-              <li>{reportData?.recommendation[0]?.연령층 || "로딩 중..."}</li>
-              <li>{reportData?.recommendation[0]?.임대료 || "로딩 중..."}</li>
-              <li>{reportData?.recommendation[0]?.상권특징 || "로딩 중..."}</li>
-            </ul>
-            <li>
-              {reportData?.recommendation[1]?.region || "상권 로딩 중..."}
-            </li>
-            <ul>
-              <li>{reportData?.recommendation[1]?.유동인구 || "로딩 중..."}</li>
-              <li>{reportData?.recommendation[1]?.직장인구 || "로딩 중..."}</li>
-              <li>{reportData?.recommendation[1]?.연령층 || "로딩 중..."}</li>
-              <li>{reportData?.recommendation[1]?.임대료 || "로딩 중..."}</li>
-              <li>{reportData?.recommendation[1]?.상권특징 || "로딩 중..."}</li>
-            </ul>
-          </ol>
+    <div className="Report-wrapper">
+      <HomeHeader />
+      <div className="Text">업종 추천 분석 리포트 출력 완료되었어요!</div>
+      <div classNmae="Biz-feature">
+        {reportData?.biz_feature || "업종 추천 중..."}
+      </div>
+      <div className="Report-grid">
+        {/* <FirstRegion FirstRegion={reportData.FirstRegion} /> */}
+        <div className="Right-column">
+          {/* <SecondRegion SecondRegion={reportData.SecondRegion} /> */}
         </div>
-      </article>
+      </div>
+      <Link to="/irq" className="Back">
+        다른 업종 분석 리포트를 작성해드릴까요?
+      </Link>
     </div>
   );
 }
