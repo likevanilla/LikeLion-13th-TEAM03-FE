@@ -1,102 +1,99 @@
-@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css");
-
-* {
-    margin: 0px;
-    padding: 0px;
-    font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+.Back {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px 24px;
+  background-color: #50adce;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  margin: 40px auto 0;
+  text-decoration: none;
+  width: fit-content;
+  margin-bottom: 60px;
+  margin-top: 70px;
 }
 
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 67px;
-    border-bottom: 2px solid #0479AF;
+.BizBanner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  background-color: #a5edd7;
+  border-radius: 20px;
+  /* border: 2px solid black; */
+  font-size: 20px;
+  max-width: 1500px;
+  min-height: 100px;
+  width: 100%;
+  font-family: "Pretendard-ExtraLight";
+  margin-top: 50px;
+  box-shadow: 7px 6px 12px -7px #333;
 }
 
-.Page-info {
-    font-size: 40px;
-    margin-left: 50px;
+.Report-typeSmall {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
-.Menu {
-    display: flex;
-    justify-content: flex-end;
-    margin-left: auto;
-
+.Text {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
-.Menu li {
-    margin-right: 30px;
-    font-size: 30px;
-    list-style: none;
+.Card {
+  background-color: #0479af;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 580px;
+  min-height: 900px;
+  color: #fff;
+  box-shadow: 7px 6px 12px -7px #333;
 }
 
-.Menu a {
-    text-decoration: none;
-    color: black;
+.RecGrid {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
+  width: 100%;
+  flex-wrap: wrap;
 }
 
-header {
-    text-align: center;
-    font-size: 30px;
-    margin-top: 70px;
-    margin-bottom: 30px;
-    font-weight: 100;
+.Card-region {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 30px;
+  font-family: "Pretendard-ExtraBold";
 }
 
-
-article {
-    width: 967px;
-    height: 100%;
-    min-height: 550px;
-    margin: auto;
-    background-color: #E7FFC1;
-    border-radius: 50px;
-    
+.Card-content {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
 }
 
-.Industry {
-    font-size: 30px;
-    font-weight: bold;
-
+.Row {
+  margin-left: 30px;
+  margin-bottom: 20px;
 }
 
-.Industry-explanation {
-    font-size: 25px;
-    padding-top: 30px;
-    padding-bottom: 30px;
-    
+.Key {
+  font-size: 30px;
+  font-family: "Pretendard-SemiBold";
 }
 
-.Report ol {
-    padding-left: 30px;
-}
-
-.Report ol > li {
-    font-size: 30px;
-    font-weight: bold;
-    margin: 10px;
-    color: #0479AF;
-    
-}
-
-.Report ul {
-    list-style:disc;
-    font-size: 25px;
-    margin-left: 30px;
-    margin-bottom: 50px;
-    
-    
-}
-
-.Report ul > li {
-    
-    margin-bottom: 10px;
-}
-
-.Report {
-    padding-left: 50px;
-    padding-top: 30px;
-    padding-bottom: 30px;
+.V {
+  margin-top: 20px;
+  font-size: 19px;
+  font-family: "Pretendard-Light";
 }

@@ -12,7 +12,12 @@ export default function HighlightText({ text = "" }) {
     "임대료",
     "유입",
   ];
-  const highlightStyle = { color: "#0278AE", fontWeight: "bold" };
+  const highlightStyle = {
+    backgroundColor: "#A5EDD7",
+    color: "black",
+    fontFamily: "Pretendard-ExtraBold",
+    fontSize: "20px",
+  };
   const regex = new RegExp(`(${keywords.join("|")})`, "g");
   return (
     <span>
