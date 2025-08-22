@@ -74,6 +74,11 @@ export default function IndustryRecommendationQuestion() {
       <HomeHeader />
 
       <main className="main-content">
+        <div className="text">
+          보다 정확하고 필요한 정보를 전달해드리기 위해
+          <br />
+          아래 항목을 선택해주세요.
+        </div>
         <form onSubmit={handleSubmit} className="question-form">
           <div className="form-group">
             <label className="form-label">성별</label>
