@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import HomeHeader from "./HomeHeader";
 import { useSearchParams } from "react-router-dom";
 import { api } from "../apis/api";
+import KakaoMap from "./KakaoMap";
+import { Link } from "react-router-dom";
 
 // 텍스트 강조 함수 - 키워드는 추후 더 추가
 function HighlightText({ text }) {
@@ -97,24 +99,46 @@ export default function CommercialAnalysisReport() {
         <div className="Report-region">
           {reportData?.region || "지역 로딩 중..."}
         </div>
-        <div>상권 분석 리포트 출력 완료되었습니다!</div>
+        <div>상권 분석 리포트 출력 완료되었어요!</div>
       </header>
-      <article>
-        <div className="Report">
-          <ol>
-            <li>인구</li>
-            <ul>
-              <li>
-                <HighlightText text={reportData?.연령별_성별_비율 || ""} />
-              </li>
-              <li>
-                <HighlightText text={reportData?.인구_추이 || ""} />
-              </li>
-              <li>
-                <HighlightText text={reportData?.유동인구 || ""} />
-              </li>
-            </ul>
-            <li>업종</li>
+      <div>
+        <div className="Population">
+          <div>인구 관련 결과를 알려드려요.</div>
+          <div>
+            <div className="Single-person">
+              <div>1인가구</div>
+              <HighlightText text={reportData?.인구?.["1인가구"] || ""} />
+            </div>
+            <div>
+              <div>상주인구</div>
+              <HighlightText text={reportData?.상주인구 || ""} />
+            </div>
+            <div>
+              <div>직장인구</div>
+              <HighlightText text={reportData?.유동인구 || ""} />
+            </div>
+            <div>
+              <HighlightText text={reportData?.직장인구 || ""} />
+            </div>
+          </div>
+          <div>
+            <div>업종 관련 결과를 알려드려요.</div>
+            <div>
+              <div>점포수</div>
+              <HighlightText text={reportData?.업종.점포수 || ""} />
+            </div>
+            <div>
+              <div>임대료 특징</div>
+              <HighlightText text={reportData?.업종.임대료_특징 || ""} />
+            </div>
+          </div>
+          <div>
+            <div>입지 특성 결과를 알려드려요.</div>
+            <div>
+              <HighlightText text={reportData?.입지_특성 || ""} />
+            </div>
+          </div>
+          {/* <li>업종</li>
             <ul>
               <li>
                 <HighlightText text={reportData?.점포수_및_매출 || ""} />
@@ -126,10 +150,12 @@ export default function CommercialAnalysisReport() {
               <li>
                 <HighlightText text={reportData?.입지_특성 || ""} />
               </li>
-            </ul>
-          </ol>
+            </ul> */}
         </div>
-      </article>
+      </div>
+      <Link to="/map" className="Back" element={<KakaoMap />}>
+        다른 상권 분석 리포트를 작성해드릴까요?
+      </Link>
     </div>
   );
 }
