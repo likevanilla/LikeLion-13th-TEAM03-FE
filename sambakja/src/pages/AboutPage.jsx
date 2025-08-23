@@ -25,6 +25,10 @@ const Wrapper = styled.div`
   @media (max-width: 768px) {
     height: auto; /* 모바일에서는 높이를 자동으로 설정 */
     padding-top: 120px; /* 헤더 높이에 맞는 여백 추가 */
+    &::before {
+      content: "";
+      background: url(${logo}) no-repeat center / 500px;
+    }
   }
 `;
 
@@ -71,7 +75,6 @@ const Card = styled.div`
   @media (max-width: 768px) {
     width: 100%; /* 모바일에서는 카드 너비를 100%로 설정 */
     height: auto; /* 모바일에서는 카드 높이를 자동으로 설정 */
-    padding: 15px; /* 카드 내부 여백 줄이기 */
     font-size: 16px; /* 모바일에서 폰트 크기 줄이기 */
   }
 `;
