@@ -24,12 +24,6 @@ const Page = styled.div`
   justify-content: center;
   padding-top: 80px;
 
-<<<<<<< HEAD
-export default function PolicyPage() {
-  return (
-    <div>
-      <HomeHeader />
-=======
   @media (max-width: 768px) {
     padding-top: 120px; /* 모바일에서는 여백을 좀 더 크게 */
   }
@@ -39,7 +33,6 @@ export default function PolicyPage() {
   return (
     <div>
       <HeaderManager />
->>>>>>> upstream/develop
       <Page>
         <Card>
           <GuideList />
