@@ -10,6 +10,9 @@ const Wrap = styled.section`
   display: flex;
   justify-content: center;
   flex-direction: column;
+  @media (max-width: 768px) {
+    padding: 0;
+  }
 `;
 
 const Header = styled.h2`
@@ -27,6 +30,9 @@ const Board = styled.div`
   align-items: center;
   justify-content: center;
   margin: 0 auto;
+  @media (max-width: 768px) {
+    width: 80%;
+  }
 `;
 
 const Card = styled.div`
@@ -114,6 +120,10 @@ const Pagination = styled.div`
   padding-top: 6px;
   margin: 0 auto;
   margin-top: 40px;
+
+  @media (max-width: 768px) {
+    width: fit-content;
+  }
 `;
 
 const PageBtn = styled.button`
