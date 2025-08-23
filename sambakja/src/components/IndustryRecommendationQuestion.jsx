@@ -1,24 +1,18 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import "./IndustryRecommendationQuestion.css";
+import { useMemo, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "/src/style/IndustryRecommendationQuestion.css";
 import HomeHeader from "./HomeHeader";
+import { industryList } from "../data/industryList";
+import { budgetList } from "../data/industryList";
 
 export default function IndustryRecommendationQuestion() {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     gender: "선택안함",
-    businessType: "",
     majorCategory: "",
     midCategory: "",
     minorCategory: "",
-    businessForm: "",
     investmentBudget: "",
-  });
-
-  const [categories, setCategories] = useState({
-    major: [],
-    mid: [],
-    minor: [],
   });
 
   const handleInputChange = (field, value) => {
@@ -41,6 +35,26 @@ export default function IndustryRecommendationQuestion() {
     }
   };
 
+  const majorOptions = useMemo(
+    () => industryList.map((m) => m.majorCategory),
+    []
+  );
+
+  const midOptions = useMemo(() => {
+    const major = industryList.find(
+      (m) => m.majorCategory === formData.majorCategory
+    );
+    return major ? major.mids.map((x) => x.midCategory) : [];
+  }, [formData.majorCategory]);
+
+  const minorOptions = useMemo(() => {
+    const major = industryList.find(
+      (m) => m.majorCategory === formData.majorCategory
+    );
+    const mid = major?.mids.find((x) => x.midCategory === formData.midCategory);
+    return mid ? mid.minorCategory : [];
+  }, [formData.majorCategory, formData.midCategory]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("폼 데이터:", formData);
@@ -57,9 +71,14 @@ export default function IndustryRecommendationQuestion() {
 
   return (
     <div className="industry-recommendation-container">
-      <HomeHeader pageInfo="업종 추천 질문" />
+      <HomeHeader />
 
       <main className="main-content">
+        <div className="text">
+          보다 정확하고 필요한 정보를 전달해드리기 위해
+          <br />
+          아래 항목을 선택해주세요.
+        </div>
         <form onSubmit={handleSubmit} className="question-form">
           <div className="form-group">
             <label className="form-label">성별</label>
@@ -93,24 +112,6 @@ export default function IndustryRecommendationQuestion() {
               </button>
             </div>
           </div>
-          {/* 
-          <div className="form-group">
-            <label className="form-label">사업 종류</label>
-            <select
-              className="form-select"
-              value={formData.businessType}
-              onChange={(e) =>
-                handleInputChange("businessType", e.target.value)
-              }
-              required
-            >
-              <option value="">사업 종류를 선택해주세요</option>
-              <option value="서비스업">서비스업</option>
-              <option value="제조업">제조업</option>
-              <option value="도소매업">도소매업</option>
-              <option value="음식점업">음식점업</option>
-            </select>
-          </div> */}
 
           <div className="form-group">
             <label className="form-label">업종 대분류</label>
@@ -123,9 +124,11 @@ export default function IndustryRecommendationQuestion() {
               required
             >
               <option value="">대분류를 선택해주세요</option>
-              <option value="음식점업">음식점업</option>
-              <option value="소매업">소매업</option>
-              <option value="서비스업">서비스업</option>
+              {majorOptions.map((maj) => (
+                <option key={maj} value={maj}>
+                  {maj}
+                </option>
+              ))}
             </select>
           </div>
 
@@ -145,14 +148,11 @@ export default function IndustryRecommendationQuestion() {
                   ? "중분류를 선택해주세요"
                   : "먼저 대분류를 선택해주세요"}
               </option>
-              {formData.majorCategory && (
-                <>
-                  <option value="한식">한식</option>
-                  <option value="중식">중식</option>
-                  <option value="일식">일식</option>
-                  <option value="양식">양식</option>
-                </>
-              )}
+              {midOptions.map((mid) => (
+                <option key={mid} value={mid}>
+                  {mid}
+                </option>
+              ))}
             </select>
           </div>
 
@@ -174,32 +174,13 @@ export default function IndustryRecommendationQuestion() {
                   ? "세분류를 선택해주세요"
                   : "먼저 중분류를 선택해주세요"}
               </option>
-              {formData.midCategory && (
-                <>
-                  <option value="한식집">한식집</option>
-                  <option value="분식점">분식점</option>
-                  <option value="치킨집">치킨집</option>
-                </>
-              )}
+              {minorOptions.map((minor) => (
+                <option key={minor} value={minor}>
+                  {minor}
+                </option>
+              ))}
             </select>
           </div>
-
-          {/* <div className="form-group">
-            <label className="form-label">사업 형태</label>
-            <select
-              className="form-select"
-              value={formData.businessForm}
-              onChange={(e) =>
-                handleInputChange("businessForm", e.target.value)
-              }
-              required
-            >
-              <option value="">사업 종류를 선택해주세요</option>
-              <option value="개인사업자">개인사업자</option>
-              <option value="법인사업자">법인사업자</option>
-              <option value="프랜차이즈">프랜차이즈</option>
-            </select>
-          </div> */}
 
           <div className="form-group">
             <label className="form-label">투자 예산</label>
@@ -211,11 +192,12 @@ export default function IndustryRecommendationQuestion() {
               }
               required
             >
-              <option value="">사업 종류를 선택해주세요</option>
-              <option value="1000만원 미만">1000만원 미만</option>
-              <option value="1000만원-3000만원">1000만원-3000만원</option>
-              <option value="3000만원-5000만원">3000만원-5000만원</option>
-              <option value="5000만원 이상">5000만원 이상</option>
+              <option value="">투자 예산을 선택해주세요</option>
+              {budgetList.map((b) => (
+                <option key={b} value={b}>
+                  {b}
+                </option>
+              ))}
             </select>
           </div>
 
