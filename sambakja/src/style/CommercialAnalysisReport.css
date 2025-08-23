@@ -125,6 +125,103 @@
   gap: 24px;
 }
 
-/* 
-@media screen and (min-width: 768px) {
-} */
+/* 반응형 스타일 */
+
+/* 모바일 (768px 이하) */
+@media (max-width: 768px) {
+
+
+  .Report-region {
+    font-size: 24px;
+    margin-top: 20px;
+  }
+
+  .Text {
+    font-size: 18px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+
+  .Title {
+    font-size: 20px;
+  }
+
+  .Content-title {
+    font-size: 24px;
+  }
+
+  .Content-description {
+    font-size: 18px;
+  }
+
+  .Back {
+    font-size: 14px;
+  }
+
+  /* 각 카드 컴포넌트 */
+  .Population, .Industry-style, .Locational {
+    width: 100%;
+    min-height: 500px;
+    margin-left: 5px;
+  }
+
+  /* 카드 내용 */
+  .Report-grid {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .Card-region {
+    font-size: 22px;
+  }
+
+  .Key {
+    font-size: 22px;
+  }
+
+  .V {
+    font-size: 16px;
+  }
+}
+
+/* 데스크탑 (1025px 이상) */
+@media (min-width: 1025px) {
+  /* .Back */
+  .Back {
+    padding: 16px 24px;
+    font-size: 16px;
+  }
+
+  /* .BizBanner */
+  .BizBanner {
+    font-size: 20px;
+    min-height: 100px;
+  }
+
+  /* .Card */
+  .Card {
+    max-width: 580px;
+    min-height: 900px;
+  }
+
+  /* .RecGrid */
+  .RecGrid {
+    flex-direction: row;
+    gap: 40px;
+  }
+
+  /* .Card-region */
+  .Card-region {
+    font-size: 30px;
+  }
+
+  /* .Key */
+  .Key {
+    font-size: 30px;
+  }
+
+  /* .V */
+  .V {
+    font-size: 19px;
+  }
+}
