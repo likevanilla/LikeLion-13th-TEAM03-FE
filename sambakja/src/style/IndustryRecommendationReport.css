@@ -1,0 +1,99 @@
+.Back {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px 24px;
+  background-color: #50adce;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  margin: 40px auto 0;
+  text-decoration: none;
+  width: fit-content;
+  margin-bottom: 60px;
+  margin-top: 70px;
+}
+
+.BizBanner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  background-color: #a5edd7;
+  border-radius: 20px;
+  /* border: 2px solid black; */
+  font-size: 20px;
+  max-width: 1500px;
+  min-height: 100px;
+  width: 100%;
+  font-family: "Pretendard-ExtraLight";
+  margin-top: 50px;
+  box-shadow: 7px 6px 12px -7px #333;
+}
+
+.Report-typeSmall {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.Text {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.Card {
+  background-color: #0479af;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 580px;
+  min-height: 900px;
+  color: #fff;
+  box-shadow: 7px 6px 12px -7px #333;
+}
+
+.RecGrid {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.Card-region {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 30px;
+  font-family: "Pretendard-ExtraBold";
+}
+
+.Card-content {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.Row {
+  margin-left: 30px;
+  margin-bottom: 20px;
+}
+
+.Key {
+  font-size: 30px;
+  font-family: "Pretendard-SemiBold";
+}
+
+.V {
+  margin-top: 20px;
+  font-size: 19px;
+  font-family: "Pretendard-Light";
+}
