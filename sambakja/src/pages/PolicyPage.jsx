@@ -18,7 +18,7 @@ const Card = styled.div`
 const Page = styled.div`
   display: flex;
   justify-content: center;
-  padding-top: 80px;
+  padding-top: 20px;
 
   @media (max-width: 768px) {
     padding-top: 120px; /* 모바일에서는 여백을 좀 더 크게 */

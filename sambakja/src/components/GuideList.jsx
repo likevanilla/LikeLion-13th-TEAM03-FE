@@ -21,6 +21,10 @@ const Header = styled.h2`
   text-align: center;
   color: #a6a1a1;
   font-family: "Pretendard-ExtraLight";
+
+  @media (max-width: 768px) {
+    font-size: 20px;
+  }
 `;
 
 const Board = styled.div`
