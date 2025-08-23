@@ -13,7 +13,8 @@ export default function HighlightText({ text = "" }) {
     "유입",
   ];
   const highlightStyle = {
-    backgroundColor: "#A5EDD7",
+    // backgroundColor: "#FFF6B5",
+    borderBottom: "2px solid black",
     color: "black",
     fontFamily: "Pretendard-ExtraBold",
     fontSize: "20px",
