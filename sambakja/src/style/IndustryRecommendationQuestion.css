@@ -11,23 +11,6 @@ nav {
   margin-left: 50px;
 }
 
-.Menu {
-  display: flex;
-  justify-content: flex-end;
-  margin-left: auto;
-}
-
-.Menu li {
-  margin-right: 30px;
-  font-size: 30px;
-  list-style: none;
-}
-
-.Menu a {
-  text-decoration: none;
-  color: black;
-}
-
 .industry-recommendation-container {
   min-height: 100vh;
   background-color: white;
@@ -37,6 +20,7 @@ nav {
   max-width: 700px;
   margin: 0 auto;
   padding: 40px 20px;
+  padding-top: 80px;
 }
 
 .question-form {

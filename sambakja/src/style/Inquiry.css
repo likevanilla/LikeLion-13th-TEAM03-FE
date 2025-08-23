@@ -1,3 +1,4 @@
+ㅍ/* 기본 스타일 (데스크탑 크기 이상) */
 nav {
   display: flex;
   justify-content: space-between;
@@ -34,6 +35,7 @@ header {
   margin-top: 50px;
   margin-bottom: 30px;
   font-weight: 100;
+  padding-top: 80px;
 }
 
 header hr {
@@ -180,4 +182,105 @@ header hr {
   text-align: center;
   border-style: none;
   border-radius: 5px;
+}
+
+/* 반응형 스타일 */
+
+/* 태블릿과 데스크탑에 적용 (1024px 이상) */
+@media (max-width: 1024px) {
+  /* 태블릿 */
+  .Page-info {
+    font-size: 30px; /* 태블릿에서 글씨 크기 줄이기 */
+    margin-left: 30px;
+  }
+
+  nav {
+    padding: 10px;
+  }
+
+  .Menu {
+    flex-direction: row; /* 메뉴 세로가 아닌 가로로 나열 */
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .Menu li {
+    font-size: 22px; /* 메뉴 항목 글씨 크기 조정 */
+    margin-right: 0;
+  }
+
+  .Inquiry-form-container {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .Inquiry-form {
+    width: 90%; /* 폼 영역 너비 조정 */
+  }
+
+  .form-label {
+    font-size: 16px; /* 폼 라벨 크기 줄이기 */
+  }
+
+  .form-input,
+  .email-dropdown,
+  .form-textarea {
+    font-size: 14px; /* 입력 폼 크기 조정 */
+  }
+
+  .submit-button {
+    padding: 12px 30px; /* 버튼 크기 줄이기 */
+  }
+}
+
+/* 모바일 화면 (768px 이하) */
+@media (max-width: 768px) {
+  /* 모바일 */
+  .Page-info {
+    font-size: 24px; /* 모바일에서 글씨 크기 줄이기 */
+    margin-left: 10px;
+  }
+
+  nav {
+    padding: 10px;
+  }
+
+  .Menu {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+  }
+
+  .Menu li {
+    font-size: 18px; /* 메뉴 항목 글씨 크기 더 줄이기 */
+  }
+
+  .Inquiry-form-container {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .Inquiry-form {
+    width: 100%; /* 폼 영역 너비를 100%로 */
+  }
+
+  .form-label {
+    font-size: 14px; /* 폼 라벨 크기 더 줄이기 */
+  }
+
+  .form-input,
+  .email-dropdown,
+  .form-textarea {
+    font-size: 12px; /* 입력 폼 크기 더 줄이기 */
+  }
+
+  .submit-button {
+    padding: 10px 25px; /* 모바일 버튼 크기 조정 */
+  }
+
+  .simple-modal {
+    width: 90%; /* 모바일에서 모달 너비 조정 */
+    max-width: 90%;
+  }
 }

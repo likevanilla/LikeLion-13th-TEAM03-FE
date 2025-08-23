@@ -1,4 +1,4 @@
-import HomeHeader from "../components/HomeHeader";
+import HeaderManager from "../components/HeaderManager";
 import map from "../assets/fi-rs-map-marker.png";
 import checkbox from "../assets/fi-rr-checkbox.png";
 import book from "../assets/fi-rr-book-alt.png";
@@ -8,6 +8,7 @@ import styled from "styled-components";
 const Wrapper = styled.div`
   height: 650px;
   position: relative;
+  padding-top: 80px;
 
   &::before {
     content: "";
@@ -20,14 +21,25 @@ const Wrapper = styled.div`
     bottom: 0px;
     z-index: -1;
   }
+
+  @media (max-width: 768px) {
+    height: auto; /* 모바일에서는 높이를 자동으로 설정 */
+    padding-top: 120px; /* 헤더 높이에 맞는 여백 추가 */
+  }
 `;
 
 const Text = styled.section`
   text-align: center;
   font-size: 30px;
   margin: 100px;
+
   div {
     margin-top: 10px;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 20px;
+    margin: 40px 20px; /* 모바일에서 여백 줄이기 */
   }
 `;
 
@@ -36,6 +48,11 @@ const Features = styled.section`
   justify-content: center;
   gap: 110px;
   padding-top: 50px;
+
+  @media (max-width: 768px) {
+    flex-direction: column; /* 모바일에서는 세로로 배치 */
+    gap: 20px; /* 카드 간격 줄이기 */
+  }
 `;
 
 const Card = styled.div`
@@ -50,18 +67,31 @@ const Card = styled.div`
     line-height: 1.2;
     padding: 20px;
   }
+
+  @media (max-width: 768px) {
+    width: 100%; /* 모바일에서는 카드 너비를 100%로 설정 */
+    height: auto; /* 모바일에서는 카드 높이를 자동으로 설정 */
+    padding: 15px; /* 카드 내부 여백 줄이기 */
+    font-size: 16px; /* 모바일에서 폰트 크기 줄이기 */
+  }
 `;
 
 const Icon = styled.img`
   width: 115px;
   height: 114px;
   margin-top: 20px;
+
+  @media (max-width: 768px) {
+    width: 90px; /* 모바일에서 아이콘 크기 줄이기 */
+    height: 90px;
+    margin-top: 10px;
+  }
 `;
 
 export default function AboutPage() {
   return (
     <Wrapper>
-      <HomeHeader />
+      <HeaderManager />
       <div>
         <Text>
           <div>복잡한 창업 정보, 누구보다 쉽게!</div>

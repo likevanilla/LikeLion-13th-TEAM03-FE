@@ -1,12 +1,12 @@
 import "/src/style/CommercialAnalysisReport.css";
 import { useEffect, useState } from "react";
-import HomeHeader from "/src/components/HomeHeader";
 import { useSearchParams } from "react-router-dom";
 import { api } from "../apis/api";
 import { Link } from "react-router-dom";
 import Population from "../components/Population";
 import Industry from "../components/Industry";
 import Locational from "../components/LocationalCharacteristics";
+import HeaderManager from "../components/HeaderManager";
 import LoadingBox from "../components/LoadingBox";
 
 function normalizeReport(raw) {
@@ -58,7 +58,7 @@ export default function CommercialAnalysisReportPage() {
 
   return (
     <div className="Report-wrapper">
-      <HomeHeader />
+      <HeaderManager />
       {loading && <LoadingBox />}
       <div className="Report-region">
         {`서울시 ${gu} ${reportData?.region || "지역 로딩 중..."}`}
