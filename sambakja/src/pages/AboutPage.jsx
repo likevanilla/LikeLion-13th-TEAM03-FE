@@ -8,7 +8,6 @@ import styled from "styled-components";
 const Wrapper = styled.div`
   height: 650px;
   position: relative;
-  padding-top: 80px;
 
   &::before {
     content: "";
@@ -24,7 +23,7 @@ const Wrapper = styled.div`
 
   @media (max-width: 768px) {
     height: auto; /* 모바일에서는 높이를 자동으로 설정 */
-    padding-top: 120px; /* 헤더 높이에 맞는 여백 추가 */
+    padding-top: 80px; /* 헤더 높이에 맞는 여백 추가 */
     &::before {
       content: "";
       background: url(${logo}) no-repeat center / 500px;
