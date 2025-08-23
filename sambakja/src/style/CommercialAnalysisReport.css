@@ -162,7 +162,7 @@
   .Population, .Industry-style, .Locational {
     width: 100%;
     min-height: 500px;
-    margin-left: 5px;
+    margin-left: 20px;
   }
 
   /* 카드 내용 */
