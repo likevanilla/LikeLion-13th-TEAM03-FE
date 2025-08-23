@@ -1,13 +1,20 @@
-import { Link } from "react-router-dom";
+import GuideList from "../components/GuideList";
+import HeaderManager from "../components/HeaderManager";
 import styled from "styled-components";
-import HomeHeader from "../components/HomeHeader";
+import { Link } from "react-router-dom";
 import report from "../assets/report.png";
 import recommend from "../assets/recommend.png";
 import guide from "../assets/guide.png";
 import Footer from "../components/Footer";
 
+// --- Styled Components --- //
+
 const Container = styled.div`
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding-top: 80px;
 `;
 
 const Title = styled.p`
@@ -17,6 +24,15 @@ const Title = styled.p`
   margin-bottom: 30px;
   font-family: "Pretendard-SemiBold";
   text-shadow: 2px 2px 2px gray;
+
+  @media (max-width: 768px) {
+    font-family: "Pretendard";
+    text-shadow: 1px 1px 1px gray;
+    font-weight: 600;
+    font-size: 40px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+  }
 `;
 
 const SubTitle = styled.p`
@@ -24,6 +40,11 @@ const SubTitle = styled.p`
   color: #a6a1a1;
   margin-bottom: 50px;
   font-family: "Pretendard-ExtraLight";
+
+  @media (max-width: 768px) {
+    font-size: 20px;
+    margin-bottom: 30px;
+  }
 `;
 
 const Button = styled.div`
@@ -33,6 +54,11 @@ const Button = styled.div`
   gap: 40px;
   width: 100%;
   margin-bottom: 60px;
+
+  @media (max-width: 768px) {
+    gap: 20px;
+    margin-bottom: 40px;
+  }
 `;
 
 const StyledLink = styled(Link)`
@@ -56,6 +82,14 @@ const StyledLink = styled(Link)`
     background-image: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15));
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   }
+
+  @media (max-width: 768px) {
+    font-size: 40px; /* 모바일에서 폰트 크기 줄이기 */
+    width: 300px; /* 모바일에서 버튼 크기 작게 */
+    height: 60px; /* 모바일에서 버튼 크기 작게 */
+    padding: 40px 20px; /* 모바일에서 패딩 줄이기 */
+    flex-direction: row;
+  }
 `;
 
 const Icon = styled.span`
@@ -65,18 +99,25 @@ const Icon = styled.span`
   width: 255px;
   height: 245px;
   margin-bottom: 40px;
+
   & > img {
     width: 100%;
     height: 100%;
-    /* object-fit: contain; */
-    display: block;
+    object-fit: contain;
+  }
+
+  @media (max-width: 768px) {
+    width: 100px;
+    height: 100px;
+    margin-right: 40px;
+    padding-top: 40px;
   }
 `;
 
 export default function HomePage() {
   return (
     <Container>
-      <HomeHeader style={{ position: "sticky", top: 0 }} />
+      <HeaderManager /> {/* 여기서 HeaderManager 컴포넌트 사용 */}
       <Title>
         당신의 창업을 <span style={{ color: "#0479AF" }}>'어디가게'</span>가
         응원합니다.

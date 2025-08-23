@@ -75,6 +75,27 @@ export default function KakaoMap() {
     setSelectedGuId(guId);
   };
 
+  const handleDongClick = (dongId, dongLabel) => {
+    // 해당 동이 속한 구의 ID 찾기
+    const guId = Object.keys(guDongMap).find((guId) => {
+      return guDongMap[guId].some((dong) => dong.id === dongId);
+    });
+
+    if (guId) {
+      // 구 클릭 처리 함수 호출 (구 폴리곤 색상, 마커, 확대 처리)
+      handleGuClick(guId);
+
+      // 동 선택 후 해당 동으로 지도 이동 (행정동의 좌표로 이동)
+      const selectedGu = guDongMap[guId];
+      const foundDong = selectedGu.find((dong) => dong.id === dongId);
+      if (foundDong) {
+        setSelectedDong({ id: dongId, label: dongLabel });
+        mapRef.current.setLevel(4); // 지도를 특정 레벨로 축소
+        setMapCenter({ lat: foundDong.lat, lng: foundDong.lng }); // **행정동의 좌표**로 이동
+      }
+    }
+  };
+
   // 검색창에서 동 검색 시 결과 생성
   const searchResults = useMemo(() => {
     if (!searchText.trim()) return [];
@@ -192,30 +213,32 @@ export default function KakaoMap() {
                 className={`kmap-itemBtn ${isSelected ? "selected" : ""}`}
                 onClick={() => {
                   if (!selectedGuId && item.guId) {
-                    // 검색 결과에서 동 클릭
-                    setSelectedGuId(item.guId);
-                    setSelectedDong({ id: item.dongId, label: item.dongLabel });
+                    // 검색 결과에서 동 클릭 시
+                    handleDongClick(item.dongId, item.dongLabel);
                     setSearchText("");
-                    mapRef.current.setLevel(4);
-                    if (item.guLat && item.guLng)
-                      setMapCenter({ lat: item.guLat, lng: item.guLng });
+                    // 검색된 동의 좌표로 지도 이동
+                    if (item.lat && item.lng) {
+                      setMapCenter({ lat: item.lat, lng: item.lng }); // 행정동 좌표로 이동
+                    }
                   } else if (selectedGuId) {
-                    // 구 선택 후 동 클릭
+                    // 구 선택 후 동 클릭 시
                     setSelectedDong({ id: key, label });
                     mapRef.current.setLevel(4);
                     const found = guDongMap[selectedGuId]?.find(
                       (d) => d.id === key
                     );
-                    if (found?.lat && found?.lng)
-                      setMapCenter({ lat: found.lat, lng: found.lng });
+                    if (found?.lat && found?.lng) {
+                      setMapCenter({ lat: found.lat, lng: found.lng }); // 해당 동으로 이동
+                    }
                   } else {
-                    // 구 버튼 클릭
+                    // 구 버튼 클릭 시
                     setSelectedGuId(item.id);
                     setSelectedDong(null);
                     setSearchText("");
                     handleGuClick(item.id);
-                    if (item.lat && item.lng)
-                      setMapCenter({ lat: item.lat, lng: item.lng });
+                    if (item.lat && item.lng) {
+                      setMapCenter({ lat: item.lat, lng: item.lng }); // 구의 중심으로 이동
+                    }
                   }
                 }}
               >

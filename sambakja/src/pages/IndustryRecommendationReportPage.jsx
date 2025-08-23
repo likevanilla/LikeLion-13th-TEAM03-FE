@@ -1,10 +1,10 @@
-import HomeHeader from "../components/HomeHeader";
 import "/src/style/IndustryRecommendationReport.css";
 import React, { useEffect, useState } from "react";
 import { api } from "../apis/api";
 import { useSearchParams, Link } from "react-router-dom";
 import RecommendationCard from "../components/RecommendationCard";
 import BizFeature from "../components/BizFeature";
+import HeaderManager from "../components/HeaderManager";
 
 function normalizeReport(raw) {
   const r = raw ?? {};
@@ -58,7 +58,7 @@ export default function IndustryRecommendationReport() {
 
   return (
     <div className="Report-wrapper">
-      <HomeHeader />
+      <HeaderManager />
       <div className="Report-typeSmall">{reportData.typeSmall}</div>
       <div className="Text">업종 추천 분석 리포트 출력 완료되었어요!</div>
       <div className="Biz-feature">{reportData?.biz_feature}</div>

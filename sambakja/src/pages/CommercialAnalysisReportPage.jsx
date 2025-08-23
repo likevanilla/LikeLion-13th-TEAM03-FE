@@ -1,12 +1,12 @@
 import "/src/style/CommercialAnalysisReport.css";
 import { useEffect, useState } from "react";
-import HomeHeader from "/src/components/HomeHeader";
 import { useSearchParams } from "react-router-dom";
 import { api } from "../apis/api";
 import { Link } from "react-router-dom";
 import Population from "../components/Population";
 import Industry from "../components/Industry";
 import Locational from "../components/LocationalCharacteristics";
+import HeaderManager from "../components/HeaderManager";
 
 function normalizeReport(raw) {
   const r = raw ?? {};
@@ -57,7 +57,7 @@ export default function CommercialAnalysisReportPage() {
 
   return (
     <div className="Report-wrapper">
-      <HomeHeader />
+      <HeaderManager />
       <div className="Report-region">
         {reportData?.region || "지역 로딩 중..."}
       </div>

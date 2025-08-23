@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import HomeHeader from "../components/HomeHeader";
 import { useState } from "react";
+import HeaderManager from "../components/HeaderManager";
 
 const Category = styled.div`
   background-color: #e7ffc1;
@@ -10,6 +10,7 @@ const Category = styled.div`
   justify-content: center;
   gap: 12px;
   margin: 40px 100px 40px 100px;
+  padding-top: 80px;
 `;
 
 const Btn = styled.button`
@@ -95,7 +96,7 @@ export default function PolicyGuidePage() {
 
   return (
     <div>
-      <HomeHeader />
+      <HeaderManager />
       <Category>
         {Object.keys(end).map((ca) => (
           <Btn key={ca} onClick={() => setActive(ca)}>
