@@ -1,7 +1,7 @@
 import "/src/style/Inquiry.css";
 import { useState } from "react";
-import HomeHeader from "./HomeHeader";
 import { api } from "../apis/api";
+import HeaderManager from "./HeaderManager";
 
 export default function Inquiry() {
   const [name, setName] = useState("");
@@ -74,7 +74,7 @@ export default function Inquiry() {
   return (
     <div className="Inquiry-container">
       {ok && <Modal />}
-      <HomeHeader />
+      <HeaderManager />
       <header>
         <div>궁금하신 사항은 아래 양식을 통해 문의해 주시기 바랍니다.</div>
         <div>빠르고 친절하게 답변드리겠습니다.</div>
