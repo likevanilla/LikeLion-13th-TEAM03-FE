@@ -14,7 +14,6 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  padding-top: 80px;
 `;
 
 const Title = styled.p`
@@ -29,7 +28,7 @@ const Title = styled.p`
     font-family: "Pretendard";
     text-shadow: 1px 1px 1px gray;
     font-weight: 600;
-    font-size: 40px;
+    font-size: 35px;
     margin-top: 30px;
     margin-bottom: 20px;
   }
@@ -84,11 +83,12 @@ const StyledLink = styled(Link)`
   }
 
   @media (max-width: 768px) {
-    font-size: 40px; /* 모바일에서 폰트 크기 줄이기 */
-    width: 300px; /* 모바일에서 버튼 크기 작게 */
-    height: 60px; /* 모바일에서 버튼 크기 작게 */
-    padding: 40px 20px; /* 모바일에서 패딩 줄이기 */
+    font-size: 38px; /* 모바일에서 폰트 크기 줄이기 */
+    width: 350px; /* 모바일에서 버튼 크기 작게 */
+    height: 140px; /* 모바일에서 버튼 크기 작게 */
+    padding: 16px 8px; /* 모바일에서 패딩 줄이기 */
     flex-direction: row;
+    justify-content: flex-start;
   }
 `;
 
@@ -107,10 +107,12 @@ const Icon = styled.span`
   }
 
   @media (max-width: 768px) {
-    width: 100px;
-    height: 100px;
-    margin-right: 40px;
-    padding-top: 40px;
+    width: 140px;
+    height: 140px;
+    /* margin-right: 30px;
+    padding-top: 40px; */
+    padding-top: 20px;
+    margin-top: 20px;
   }
 `;
 

@@ -30,7 +30,7 @@ const LogoImg = styled.img`
   top: 50%;
   left: 50%;
   width: 100px;
-  height: 130px;
+  height: 100px;
   padding-bottom: 30px;
   transform: translate(-50%, -50%);
 `;
@@ -54,7 +54,7 @@ export default function LoadingBox() {
         <SpinnerImg src={Spinner} />
         <LogoImg src={Logo} alt="logo" />
         <Text>
-          <div>리포트를 분석 중입니다..</div>
+          <div>데이터를 가져오고 있어요</div>
           <div>잠시만 기다려주세요..</div>
         </Text>
       </Box>

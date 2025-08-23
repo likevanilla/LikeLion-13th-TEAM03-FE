@@ -21,6 +21,10 @@ const Header = styled.h2`
   text-align: center;
   color: #a6a1a1;
   font-family: "Pretendard-ExtraLight";
+
+  @media (max-width: 768px) {
+    font-size: 20px;
+  }
 `;
 
 const Board = styled.div`
@@ -191,8 +195,6 @@ export default function GuideList() {
   return (
     <Wrap>
       <Header>원하시는 정책 정보를 확인하세요.</Header>
-      {loading && <p>불러오는 중..</p>}
-      {error && <p>에러가 발생했습니다.</p>}
       <Board>
         {data.map((card) => (
           <Card key={card.id}>
