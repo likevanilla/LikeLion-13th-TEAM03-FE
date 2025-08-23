@@ -102,6 +102,10 @@
   box-shadow: 7px 6px 12px -7px #333;
 }
 
+.Content-description {
+  margin-top: 40px;
+}
+
 /* 페이지 스타일 */
 
 .Report-wrapper {

@@ -11,7 +11,6 @@ export default function LocationalCharacteristics({ text = "" }) {
       <div className="Content">
         <div className="Content-description">
           <HighlightText text={text} />
-          <div>내용</div>
         </div>
       </div>
     </div>
