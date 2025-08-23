@@ -30,7 +30,7 @@ const LogoImg = styled.img`
   top: 50%;
   left: 50%;
   width: 100px;
-  height: 100px;
+  height: 130px;
   padding-bottom: 30px;
   transform: translate(-50%, -50%);
 `;

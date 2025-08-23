@@ -5,6 +5,7 @@ import { useSearchParams, Link } from "react-router-dom";
 import RecommendationCard from "../components/RecommendationCard";
 import BizFeature from "../components/BizFeature";
 import HeaderManager from "../components/HeaderManager";
+import LoadingBox from "../components/LoadingBox";
 
 function normalizeReport(raw) {
   const r = raw ?? {};
@@ -30,6 +31,9 @@ export default function IndustryRecommendationReport() {
   const budget = sp.get("budget");
 
   async function postReport() {
+    const MIN_SPINNER = 3000;
+    const started = Date.now();
+
     try {
       setLoading(true);
       setError("");
@@ -48,7 +52,9 @@ export default function IndustryRecommendationReport() {
       setReportData(INITIAL);
       console.error(e);
     } finally {
-      setLoading(false);
+      const elapsed = Date.now() - started;
+      const remain = Math.max(0, MIN_SPINNER - elapsed);
+      setTimeout(() => setLoading(false), remain);
     }
   }
 
@@ -59,15 +65,12 @@ export default function IndustryRecommendationReport() {
   return (
     <div className="Report-wrapper">
       <HeaderManager />
+      {loading && <LoadingBox />}
       <div className="Report-typeSmall">{reportData.typeSmall}</div>
       <div className="Text">업종 추천 분석 리포트 출력 완료되었어요!</div>
       <div className="Biz-feature">{reportData?.biz_feature}</div>
       <BizFeature text={reportData.bizFeature} />
-      {/* <div className="Report-grid">
-        {reportData.recommendations.map((rec, i) => (
-          <RecommendationCard key={i} region={rec.region} reason={rec.reason} />
-        ))}
-      </div> */}
+
       <div className="RecGrid">
         {reportData.recommendations?.length ? (
           reportData.recommendations.map((rec, i) => (

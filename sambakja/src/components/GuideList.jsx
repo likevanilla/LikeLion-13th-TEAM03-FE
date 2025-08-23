@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { rightCard } from "../utils/policy";
 import styled from "styled-components";
 import { api } from "../apis/api";
-import GuideListLoading from "../components/GuideListLoadingBox";
 
 const Wrap = styled.section`
   width: 100%;
@@ -192,7 +191,6 @@ export default function GuideList() {
   return (
     <Wrap>
       <Header>원하시는 정책 정보를 확인하세요.</Header>
-      {/* {loading && <GuideListLoading/>} */}
       <Board>
         {data.map((card) => (
           <Card key={card.id}>
