@@ -8,4 +8,7 @@ export default defineConfig({
   json: {
     stringify: true,
   },
+  server: {
+    historyApiFallback: true, // 모든 경로를 index.html로 리디렉션
+  },
 });

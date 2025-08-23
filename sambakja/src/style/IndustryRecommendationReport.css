@@ -1,3 +1,4 @@
+/* 기본 스타일 */
 .Back {
   display: flex;
   justify-content: center;
@@ -10,7 +11,7 @@
   font-size: 16px;
   cursor: pointer;
   transition: background-color 0.2s ease;
-  margin: 40px auto 0;
+  margin: 40px auto 0; /* 중앙 정렬을 위해 auto 설정 */
   text-decoration: none;
   width: fit-content;
   margin-bottom: 60px;
@@ -21,17 +22,17 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0 auto;
   background-color: #a5edd7;
   border-radius: 20px;
-  /* border: 2px solid black; */
   font-size: 20px;
-  max-width: 1500px;
-  min-height: 100px;
-  width: 100%;
+  width: 100%; /* 너비를 100%로 설정 */
   font-family: "Pretendard-ExtraLight";
   margin-top: 50px;
   box-shadow: 7px 6px 12px -7px #333;
+  padding: 10px 0; /* 패딩 설정 */
+  box-sizing: border-box; /* 패딩을 포함한 너비 설정 */
+  margin-left: auto; /* 좌측 여백 자동 */
+  margin-right: auto; /* 우측 여백 자동 */
 }
 
 .Report-typeSmall {
@@ -53,11 +54,12 @@
 .Card {
   background-color: #0479af;
   border-radius: 20px;
-  width: 100%;
-  max-width: 580px;
+  width: 100%; /* 너비를 100%로 설정 */
   min-height: 900px;
   color: #fff;
   box-shadow: 7px 6px 12px -7px #333;
+  padding: 20px;
+  box-sizing: border-box; /* 패딩을 포함한 너비 설정 */
 }
 
 .RecGrid {
@@ -96,4 +98,98 @@
   margin-top: 20px;
   font-size: 19px;
   font-family: "Pretendard-Light";
+}
+
+/* 반응형 스타일 */
+
+/* 모바일 (768px 이하) */
+@media (max-width: 768px) {
+  /* .Back */
+  .Back {
+    padding: 12px 20px;
+    font-size: 14px;
+    width: 80%; /* 버튼의 너비를 80%로 설정 */
+    margin-left: auto; /* 좌측 여백 자동 */
+    margin-right: auto; /* 우측 여백 자동 */
+  }
+
+  /* .BizBanner */
+  .BizBanner {
+    font-size: 16px;
+    min-height: 80px;
+    padding: 10px;
+    width: 90%; /* BizBanner의 너비를 화면에 맞게 90%로 설정 */
+    margin-left: auto; /* 좌측 여백 자동 */
+    margin-right: auto; /* 우측 여백 자동 */
+  }
+
+  /* .Card */
+  .Card {
+    max-width: 100%;
+    min-height: 600px;
+    padding: 20px;
+  }
+
+  /* .RecGrid */
+  .RecGrid {
+    flex-direction: column; /* 카드 세로 배치 */
+    gap: 20px;
+  }
+
+  /* .Card-region */
+  .Card-region {
+    font-size: 24px;
+  }
+
+  /* .Key */
+  .Key {
+    font-size: 24px;
+  }
+
+  /* .V */
+  .V {
+    font-size: 16px;
+  }
+}
+
+/* 데스크탑 (1025px 이상) */
+@media (min-width: 1025px) {
+  /* .Back */
+  .Back {
+    padding: 16px 24px;
+    font-size: 16px;
+  }
+
+  /* .BizBanner */
+  .BizBanner {
+    font-size: 20px;
+    min-height: 100px;
+  }
+
+  /* .Card */
+  .Card {
+    max-width: 580px;
+    min-height: 900px;
+  }
+
+  /* .RecGrid */
+  .RecGrid {
+    flex-direction: row;
+    gap: 40px;
+  }
+
+  /* .Card-region */
+  .Card-region {
+    font-size: 30px;
+  }
+
+  /* .Key */
+  .Key {
+    font-size: 30px;
+  }
+
+  /* .V */
+  .V {
+    font-size: 19px;
+  }
 }
