@@ -7,11 +7,7 @@ const Card = styled.div`
   gap: 30px;
   margin: 0 auto;
   width: 100%;
-  flex-wrap: wrap; /* 모바일에서 카드가 세로로 쌓이도록 */
-
-  @media (max-width: 1024px) {
-    gap: 20px; /* 태블릿에서는 카드 간격을 줄이기 */
-  }
+  flex-wrap: wrap;
 
   @media (max-width: 768px) {
     justify-content: center; /* 모바일에서 카드들을 중앙에 배치 */
