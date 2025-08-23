@@ -16,14 +16,12 @@ export default function Industry({ industry = {} }) {
           <div className="Content-title">점포수</div>
           <div className="Content-description">
             <HighlightText text={storeCount} />
-            <div>내용</div>
           </div>
         </div>
         <div>
           <div className="Content-title">임대료 특징</div>
           <div className="Content-description">
             <HighlightText text={rentFeature} />
-            <div>내용</div>
           </div>
         </div>
       </div>

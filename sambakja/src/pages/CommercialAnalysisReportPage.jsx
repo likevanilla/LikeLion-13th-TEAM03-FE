@@ -7,6 +7,7 @@ import Population from "../components/Population";
 import Industry from "../components/Industry";
 import Locational from "../components/LocationalCharacteristics";
 import HeaderManager from "../components/HeaderManager";
+import LoadingBox from "../components/LoadingBox";
 
 function normalizeReport(raw) {
   const r = raw ?? {};
@@ -25,15 +26,18 @@ export default function CommercialAnalysisReportPage() {
   const [reportData, setReportData] = useState(INITIAL);
   const [sp] = useSearchParams();
   const gu = sp.get("gu");
-  const dong = sp.get("dong");
+  const region = sp.get("region");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
   async function postReport() {
+    const MIN_SPINNER = 5000;
+    const started = Date.now();
+
     try {
       setLoading(true);
       setError("");
-      const res = await api.post("/api/region/report", { gu, dong });
+      const res = await api.post("/api/region/report", { region });
       const data = normalizeReport(res.data);
       setReportData(data);
       console.log(reportData);
@@ -42,24 +46,22 @@ export default function CommercialAnalysisReportPage() {
       setReportData(INITIAL);
       console.error(e);
     } finally {
-      setLoading(false);
+      const elapsed = Date.now() - started;
+      const remain = Math.max(0, MIN_SPINNER - elapsed);
+      setTimeout(() => setLoading(false), remain);
     }
   }
 
   useEffect(() => {
     postReport();
-  }, [gu, dong]);
-
-  //   setTimeout(() => {
-  //     setReportData(mockData);
-  //   }, 500);
-  // }, []);
+  }, [region]);
 
   return (
     <div className="Report-wrapper">
       <HeaderManager />
+      {loading && <LoadingBox />}
       <div className="Report-region">
-        {reportData?.region || "지역 로딩 중..."}
+        {`서울시 ${gu} ${reportData?.region || "지역 로딩 중..."}`}
       </div>
       <div className="Text">상권 분석 리포트 출력 완료되었어요!</div>
       <div className="Report-grid">
