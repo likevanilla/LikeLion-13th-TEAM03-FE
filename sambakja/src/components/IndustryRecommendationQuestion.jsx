@@ -8,7 +8,7 @@ import HeaderManager from "./HeaderManager";
 export default function IndustryRecommendationQuestion() {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    gender: "선택안함",
+    gender: "남성",
     majorCategory: "",
     midCategory: "",
     minorCategory: "",
@@ -100,15 +100,6 @@ export default function IndustryRecommendationQuestion() {
                 onClick={() => handleInputChange("gender", "여성")}
               >
                 여성
-              </button>
-              <button
-                type="button"
-                className={`gender-btn ${
-                  formData.gender === "선택안함" ? "selected" : ""
-                }`}
-                onClick={() => handleInputChange("gender", "선택안함")}
-              >
-                선택안함
               </button>
             </div>
           </div>
