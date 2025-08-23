@@ -31,7 +31,7 @@ export default function CommercialAnalysisReportPage() {
   const [error, setError] = useState("");
 
   async function postReport() {
-    const MIN_SPINNER = 5000;
+    const MIN_SPINNER = 3000;
     const started = Date.now();
 
     try {
