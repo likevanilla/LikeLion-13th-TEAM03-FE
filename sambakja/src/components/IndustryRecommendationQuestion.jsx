@@ -1,9 +1,9 @@
 import { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "/src/style/IndustryRecommendationQuestion.css";
-import HomeHeader from "./HomeHeader";
 import { industryList } from "../data/industryList";
 import { budgetList } from "../data/industryList";
+import HeaderManager from "./HeaderManager";
 
 export default function IndustryRecommendationQuestion() {
   const navigate = useNavigate();
@@ -71,7 +71,7 @@ export default function IndustryRecommendationQuestion() {
 
   return (
     <div className="industry-recommendation-container">
-      <HomeHeader />
+      <HeaderManager />
 
       <main className="main-content">
         <div className="text">

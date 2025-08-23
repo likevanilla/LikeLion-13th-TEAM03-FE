@@ -5,42 +5,35 @@ import { NavLink, useLocation, matchPath } from "react-router-dom";
 const Header = styled.div`
   position: sticky;
   top: 0;
+  padding: 10px;
+  background-color: #fff;
 `;
 
 const Nav = styled.nav`
   display: flex;
   align-items: center;
+  justify-content: space-between; /* 메뉴 항목들을 양옆에 배치 */
   height: 80px;
-  max-width: 1000px;
+  max-width: 80%; /* Nav의 최대 너비 설정 */
   border-bottom: none;
   border-radius: 50px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   margin-top: 50px;
   width: 100%;
   margin: 0 auto;
-  margin-top: 40px;
   padding-right: 20px;
   background-color: #fff;
-
-  /* @media screen and (max-width: 767px) {
-    display: flex;
-    /* justify-content: space-between;
-    align-items: center; */
-  /* flex-direction: column;
-    border-bottom: none; */
-  /* } */
+  flex-wrap: wrap;
 `;
 
 const Menu = styled.ul`
-  /* display: flex;
-  justify-content: flex-end;
-   */
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 0 auto;
   gap: 20px;
-  margin-left: 85px;
+  flex-wrap: wrap; /* 메뉴 항목들이 화면에 맞게 줄 바꿈 되도록 설정 */
+  width: 100%; /* Menu의 너비를 100%로 설정하여 Nav에 맞게 맞춰줌 */
 `;
 
 const List = styled.li`
@@ -49,13 +42,6 @@ const List = styled.li`
   list-style: none;
   justify-content: center;
   align-items: center;
-
-  /* @media screen and (max-width: 767px) {
-    display: flex;
-    /* justify-content: space-between;
-    align-items: center; */
-  /* flex-direction: column;
-  } */
 `;
 
 const Alink = styled(NavLink)`
@@ -70,19 +56,23 @@ const Alink = styled(NavLink)`
     text-shadow: 2px 2px 2px gray;
   }
 
-  /* @media screen and (max-width: 767px) {
-    display: flex;
-    /* justify-content: space-between;
-    align-items: center; */
-  /* flex-direction: column;
-    border-bottom: none;
-  } */
+  @media (max-width: 1024px) {
+    font-size: 20px; /* 태블릿에서 글씨 크기 줄이기 */
+  }
+
+  @media (max-width: 768px) {
+    font-size: 18px; /* 모바일에서 글씨 크기 줄이기 */
+  }
 `;
 
 const Logo = styled.img`
   height: 70px;
   width: auto;
   display: block;
+
+  @media (max-width: 768px) {
+    height: 50px; /* 모바일에서 로고 크기 줄이기 */
+  }
 `;
 
 function MultiRouteLink({ to, patterns = [], children }) {
