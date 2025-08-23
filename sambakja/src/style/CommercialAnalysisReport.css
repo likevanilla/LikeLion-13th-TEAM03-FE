@@ -134,6 +134,10 @@
 /* 모바일 (768px 이하) */
 @media (max-width: 768px) {
 
+  .Report-wrapper{
+    max-width: 80%;
+    margin-left: 20px;
+  }
 
   .Report-region {
     font-size: 24px;
@@ -167,12 +171,14 @@
     width: 100%;
     min-height: 500px;
     margin-left: 20px;
+
   }
 
   /* 카드 내용 */
   .Report-grid {
     display: flex;
     flex-direction: column;
+    width: 80%;
   }
 
   .Card-region {

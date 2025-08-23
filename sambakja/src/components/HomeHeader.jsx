@@ -14,14 +14,12 @@ const Nav = styled.nav`
   align-items: center;
   justify-content: space-between; /* 메뉴 항목들을 양옆에 배치 */
   height: 80px;
-  max-width: 80%; /* Nav의 최대 너비 설정 */
   border-bottom: none;
   border-radius: 50px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   margin-top: 50px;
   width: 100%;
   margin: 0 auto;
-  padding-right: 20px;
   background-color: #fff;
   flex-wrap: wrap;
 `;
@@ -119,7 +117,7 @@ export default function HomeHeader() {
           </List>
           <List>
             <MultiRouteLink to="/irq" patterns={["/irq", "irr"]}>
-              업종 추천
+              상권 추천
             </MultiRouteLink>
           </List>
           <List>

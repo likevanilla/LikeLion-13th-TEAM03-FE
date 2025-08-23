@@ -91,7 +91,7 @@ export default function MobileHeader() {
           상권 분석
         </Link>
         <Link to="/irq" onClick={toggleMenu}>
-          업종 추천
+          상권 추천
         </Link>
         <Link to="/po" onClick={toggleMenu}>
           정책 안내
