@@ -140,7 +140,7 @@ export default function HomePage() {
           <Icon>
             <img src={recommend} alt="이미지없음"></img>
           </Icon>
-          업종 추천
+          상권 추천
         </StyledLink>
         <StyledLink
           to="/po"

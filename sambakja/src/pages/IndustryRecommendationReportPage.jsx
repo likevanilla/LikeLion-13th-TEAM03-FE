@@ -60,7 +60,7 @@ export default function IndustryRecommendationReport() {
     <div className="Report-wrapper">
       <HeaderManager />
       <div className="Report-typeSmall">{reportData.typeSmall}</div>
-      <div className="Text">업종 추천 분석 리포트 출력 완료되었어요!</div>
+      <div className="Text">상권 추천 분석 리포트 출력 완료되었어요!</div>
       <div className="Biz-feature">{reportData?.biz_feature}</div>
       <BizFeature text={reportData.bizFeature} />
       {/* <div className="Report-grid">
