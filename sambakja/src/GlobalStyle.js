@@ -61,6 +61,8 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     font-family: 'Pretendard-Regular';
   }
+
+  *, *::before, *::after{box-sizing: border-box}
 `;
 
 export default GlobalStyle;
