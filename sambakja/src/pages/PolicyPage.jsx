@@ -13,16 +13,10 @@ const Page = styled.div`
   justify-content: center;
 `;
 
-const Home = styled.div`
-  /* position: fixed; */
-`;
-
 export default function PolicyPage() {
   return (
     <div>
-      <Home>
-        <HomeHeader />
-      </Home>
+      <HomeHeader />
       <Page>
         <Card>
           <GuideList />
