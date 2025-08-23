@@ -193,7 +193,7 @@ export default function IndustryRecommendationQuestion() {
           </div>
 
           <button type="submit" className="submit-btn">
-            업종 추천 리포트를 작성해드릴까요?
+            상권 추천 리포트를 작성해드릴까요?
           </button>
         </form>
       </main>

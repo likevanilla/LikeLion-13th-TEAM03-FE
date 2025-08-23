@@ -119,7 +119,7 @@ export default function HomeHeader() {
           </List>
           <List>
             <MultiRouteLink to="/irq" patterns={["/irq", "irr"]}>
-              업종 추천
+              상권 추천
             </MultiRouteLink>
           </List>
           <List>
