@@ -12,30 +12,30 @@ const Header = styled.div`
 const Nav = styled.nav`
   display: flex;
   align-items: center;
-  justify-content: space-between; /* 메뉴 항목들을 양옆에 배치 */
+  justify-content: center;
   height: 80px;
+  width: 90%;
+  margin-left: 5%;
   border-bottom: none;
   border-radius: 50px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-  margin-top: 50px;
-  width: 100%;
-  margin: 0 auto;
   background-color: #fff;
   flex-wrap: wrap;
+  margin-top: 40px;
 `;
 
 const Menu = styled.ul`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0 auto;
+  margin-left: 5px;
   gap: 20px;
   flex-wrap: wrap; /* 메뉴 항목들이 화면에 맞게 줄 바꿈 되도록 설정 */
   width: 100%; /* Menu의 너비를 100%로 설정하여 Nav에 맞게 맞춰줌 */
 `;
 
 const List = styled.li`
-  margin-right: 30px;
+  margin-right: 15px;
   font-size: 25px;
   list-style: none;
   justify-content: center;
@@ -52,10 +52,6 @@ const Alink = styled(NavLink)`
 
   &:hover {
     text-shadow: 2px 2px 2px gray;
-  }
-
-  @media (max-width: 1024px) {
-    font-size: 20px; /* 태블릿에서 글씨 크기 줄이기 */
   }
 
   @media (max-width: 768px) {
