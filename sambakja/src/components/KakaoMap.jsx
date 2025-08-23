@@ -257,16 +257,23 @@ export default function KakaoMap() {
               <button
                 className="kmap-primaryBtn"
                 type="button"
-                onClick={() =>
+                onClick={() => {
+                  const region = selectedDong.label;
                   navigate(
+                    // `/re?gu=${encodeURIComponent(
+                    //   selectedGuLabel
+                    // )}&dong=${encodeURIComponent(selectedDong.label)}`,
+                    // {
+                    //   state: { guId: selectedGuId, dongId: selectedDong.id },
+                    // }
                     `/re?gu=${encodeURIComponent(
                       selectedGuLabel
-                    )}&dong=${encodeURIComponent(selectedDong.label)}`,
+                    )}&region=${encodeURIComponent(region)}`,
                     {
                       state: { guId: selectedGuId, dongId: selectedDong.id },
                     }
-                  )
-                }
+                  );
+                }}
               >
                 네, 작성해주세요.
               </button>
