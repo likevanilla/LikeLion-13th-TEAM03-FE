@@ -84,11 +84,11 @@
 .kmap-list {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: flex-start;
   /* 세로 간격 유지, 가로 간격은 균등 분배 */
   row-gap: 8px;
-  column-gap: 0;
-  align-items: flex-start;
+  column-gap: 8px;
+  align-items: center;
   max-height: 300px;
   overflow-y: auto;
 }
@@ -101,7 +101,8 @@
   color: #fff;
   cursor: pointer;
   font-size: 13px;
-  min-width: 60px;
+  /* min-width: 60px; */
+  width: 100px;
   text-align: center;
   white-space: nowrap;
   height: 32px;
@@ -245,5 +246,11 @@
     margin-top: 8px;
     transform: none;
     z-index: auto;
+  }
+
+  .kmap-itemBtn {
+    display: flex;
+    justify-content: center;
+    width: 100px;
   }
 }
