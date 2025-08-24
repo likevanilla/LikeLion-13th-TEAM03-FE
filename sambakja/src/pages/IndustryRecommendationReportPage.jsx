@@ -109,7 +109,7 @@ export default function IndustryRecommendationReport() {
       </div>
 
       <Link to="/irq" className="Back">
-        다른 업종 분석 리포트를 작성해드릴까요?
+        다른 상권 분석 리포트를 작성해드릴까요?
       </Link>
     </div>
   );
