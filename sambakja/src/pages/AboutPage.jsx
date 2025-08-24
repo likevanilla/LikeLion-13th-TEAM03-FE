@@ -6,7 +6,7 @@ import logo from "../assets/어디가게로고.png";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
-  height: 650px;
+  min-height: 650px;
   position: relative;
 
   &::before {
