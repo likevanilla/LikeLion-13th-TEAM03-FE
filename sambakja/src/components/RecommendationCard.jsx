@@ -10,7 +10,7 @@ export default function RecommendationCard({ region = "", reason = {} }) {
 
   return (
     <div className="Card">
-      <div className="Card-region">{region || "-"}</div>
+      <div className="Card-region">{region || ""}</div>
       <div className="Card-content">
         {rows.map(({ key, value }) => (
           <div className="Row" key={key}>
