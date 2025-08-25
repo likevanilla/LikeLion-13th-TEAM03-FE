@@ -5,8 +5,11 @@ import { NavLink, useLocation, matchPath } from "react-router-dom";
 const Header = styled.div`
   position: sticky;
   top: 0;
+  /* left: 0;
+  right: 0; */
   padding: 10px;
   background-color: #fff;
+  /* z-index: 1000; */
 `;
 
 const Nav = styled.nav`
