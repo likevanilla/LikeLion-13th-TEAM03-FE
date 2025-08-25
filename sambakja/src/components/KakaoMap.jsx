@@ -57,6 +57,12 @@ export default function KakaoMap() {
 
       label.setMap(mapRef.current); // 라벨을 지도에 추가
 
+      window.kakao.maps.event.addListener(marker, "click", () => {
+        setSelectedDong({ id: dong.id, label: dong.label });
+        mapRef.current.setLevel(4);
+        setMapCenter({ lat: dong.lat, lng: dong.lng });
+      });
+
       newMarkers.push(marker);
       newLabels.push(label);
     });
