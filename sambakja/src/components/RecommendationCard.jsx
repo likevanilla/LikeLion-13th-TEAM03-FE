@@ -1,4 +1,3 @@
-import HighlightText from "./HighlightText";
 import "/src/style/IndustryRecommendationReport.css";
 
 const ORDER = ["유동인구", "직장인구", "연령층", "임대료", "상권특징"];
@@ -16,7 +15,7 @@ export default function RecommendationCard({ region = "", reason = {} }) {
           <div className="Row" key={key}>
             <div className="Key">{key}</div>
             <div className="V">
-              <HighlightText text={value} />
+              <p>{value}</p>
             </div>
           </div>
         ))}
