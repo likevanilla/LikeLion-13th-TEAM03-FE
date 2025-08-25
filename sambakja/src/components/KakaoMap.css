@@ -105,8 +105,8 @@
   color: #fff;
   cursor: pointer;
   font-size: 13px;
-  /* min-width: 60px; */
-  width: 100px;
+  min-width: 100px;
+  max-width: fit-content;
   text-align: center;
   white-space: nowrap;
   height: 32px;
@@ -255,6 +255,7 @@
   .kmap-itemBtn {
     display: flex;
     justify-content: center;
-    width: 100px;
+    min-width: 100px;
+    max-width: fit-content;
   }
 }
