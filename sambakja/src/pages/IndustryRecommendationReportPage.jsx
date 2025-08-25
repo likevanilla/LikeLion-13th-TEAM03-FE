@@ -66,7 +66,6 @@ export default function IndustryRecommendationReport() {
     <div className="Report-wrapper">
       <HeaderManager />
       {loading && <LoadingBox />}
-      <div className="Report-typeSmall">{reportData.typeSmall}</div>
       <div className="Text">상권 추천 분석 리포트 출력 완료되었어요!</div>
       <div className="Biz-feature">{reportData?.biz_feature}</div>
       <BizFeature text={reportData.bizFeature} />
@@ -84,13 +83,13 @@ export default function IndustryRecommendationReport() {
           <>
             {/* API 없을 때 임시 카드 */}
             <RecommendationCard
-              region="강동구 성내동"
+              region=""
               reason={{
-                유동인구: "서울 평균 대비 약 128% 수준으로 높음",
-                직장인구: "20~40대 직장인 비중이 55%",
-                연령층: "30~40대 비중이 47%",
-                임대료: "서울 평균 대비 92% 수준",
-                상권특징: "대형 쇼핑몰 및 음식점 밀집",
+                유동인구: "",
+                직장인구: "",
+                연령층: "",
+                임대료: "",
+                상권특징: "",
               }}
             />
             {/* 필요하면 두 번째 목업도 */}
