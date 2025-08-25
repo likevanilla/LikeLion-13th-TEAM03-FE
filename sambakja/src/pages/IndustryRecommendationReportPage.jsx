@@ -63,8 +63,9 @@ export default function IndustryRecommendationReport() {
   }, [sex, type_large, type_medium, type_small, budget]);
 
   return (
-    <div className="Report-wrapper">
+    <>
       <HeaderManager />
+      <div className="Report-wrapper">
       {loading && <LoadingBox />}
       <div className="Text">상권 추천 분석 리포트 출력 완료되었어요!</div>
       <div className="Biz-feature">{reportData?.biz_feature}</div>
@@ -107,9 +108,10 @@ export default function IndustryRecommendationReport() {
         )}
       </div>
 
-      <Link to="/irq" className="Back">
-        다른 상권 분석 리포트를 작성해드릴까요?
-      </Link>
-    </div>
+        <Link to="/irq" className="Back">
+          다른 상권 분석 리포트를 작성해드릴까요?
+        </Link>
+      </div>
+    </>
   );
 }
