@@ -1,4 +1,3 @@
-import HighlightText from "./HighlightText";
 import "/src/style/CommercialAnalysisReport.css";
 
 export default function Population({ population = {} }) {
@@ -18,25 +17,25 @@ export default function Population({ population = {} }) {
           <div className="Single-person">
             <div className="Content-title">1인가구</div>
             <div className="Content-description">
-              <HighlightText text={one} />
+              <p>{one}</p>
             </div>
           </div>
           <div>
             <div className="Content-title">상주인구</div>
             <div className="Content-description">
-              <HighlightText text={resident} />
+              <p>{resident}</p>
             </div>
           </div>
           <div>
             <div className="Content-title">유동인구</div>
             <div className="Content-description">
-              <HighlightText text={flow} />
+              <p>{flow}</p>
             </div>
           </div>
           <div>
             <div className="Content-title">직장인구</div>
             <div className="Content-description">
-              <HighlightText text={worker} />
+              <p>{worker}</p>
             </div>
           </div>
         </div>
