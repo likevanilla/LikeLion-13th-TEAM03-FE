@@ -136,9 +136,15 @@ export default function KakaoMap() {
       {/* 우측 상단 네비게이션 메뉴 */}
       <div className="kmap-nav">
         <nav className="kmap-navInner">
-          <Link to="/">홈</Link>
-          <Link to="/irq">상권추천</Link>
-          <Link to="/po">정책안내</Link>
+          <Link to="/" className="kmap-link">
+            홈
+          </Link>
+          <Link to="/irq" className="kmap-link">
+            상권추천
+          </Link>
+          <Link to="/po" className="kmap-link">
+            정책안내
+          </Link>
         </nav>
       </div>
 
@@ -283,12 +289,6 @@ export default function KakaoMap() {
                 onClick={() => {
                   const region = selectedDong.label;
                   navigate(
-                    // `/re?gu=${encodeURIComponent(
-                    //   selectedGuLabel
-                    // )}&dong=${encodeURIComponent(selectedDong.label)}`,
-                    // {
-                    //   state: { guId: selectedGuId, dongId: selectedDong.id },
-                    // }
                     `/re?gu=${encodeURIComponent(
                       selectedGuLabel
                     )}&region=${encodeURIComponent(region)}`,
