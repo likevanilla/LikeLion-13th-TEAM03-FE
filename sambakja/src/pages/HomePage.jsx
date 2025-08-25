@@ -14,6 +14,10 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+
+  @media (max-width: 768px) {
+    padding-top: 80px;
+  }
 `;
 
 const Title = styled.p`
@@ -28,7 +32,7 @@ const Title = styled.p`
     font-family: "Pretendard";
     text-shadow: 1px 1px 1px gray;
     font-weight: 600;
-    font-size: 35px;
+    font-size: 37px;
     margin-top: 30px;
     margin-bottom: 20px;
   }
