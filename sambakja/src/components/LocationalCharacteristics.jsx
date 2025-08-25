@@ -1,4 +1,3 @@
-import HighlightText from "./HighlightText";
 import "/src/style/CommercialAnalysisReport.css";
 
 export default function LocationalCharacteristics({ text = "" }) {
@@ -10,7 +9,7 @@ export default function LocationalCharacteristics({ text = "" }) {
       </div>
       <div className="Content">
         <div className="Content-description">
-          <HighlightText text={text} />
+          <p>{text}</p>
         </div>
       </div>
     </div>
