@@ -137,7 +137,7 @@ export default function KakaoMap() {
       <div className="kmap-nav">
         <nav className="kmap-navInner">
           <Link to="/">홈</Link>
-          <Link to="/irq">업종추천</Link>
+          <Link to="/irq">상권추천</Link>
           <Link to="/po">정책안내</Link>
         </nav>
       </div>

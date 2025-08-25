@@ -50,13 +50,13 @@ export const guDongMap = {
     },
     {
       id: "11110615",
-      label: "종로1•2•3•4가동",
+      label: "종로1·2·3·4가동",
       lat: 37.57507655,
       lng: 126.9897333,
     },
     {
       id: "11110630",
-      label: "종로5•6가동",
+      label: "종로5·6가동",
       lat: 37.573016,
       lng: 127.004241,
     },
@@ -345,7 +345,7 @@ export const guDongMap = {
     },
     {
       id: "11200615",
-      label: "금호2•3가동",
+      label: "금호2·3가동",
       lat: 37.55142836,
       lng: 127.0198922,
     },
@@ -609,7 +609,7 @@ export const guDongMap = {
     },
     {
       id: "11260575",
-      label: "면목3•8동",
+      label: "면목3·8동",
       lat: 37.58459652,
       lng: 127.0973813,
     },
@@ -1025,7 +1025,7 @@ export const guDongMap = {
     },
     {
       id: "11350625",
-      label: "중계2•3동",
+      label: "중계2·3동",
       lat: 37.64204,
       lng: 127.068711,
     },
@@ -1043,7 +1043,7 @@ export const guDongMap = {
     },
     {
       id: "11350665",
-      label: "상계3•4동",
+      label: "상계3·4동",
       lat: 37.672624,
       lng: 127.08302,
     },
@@ -1055,7 +1055,7 @@ export const guDongMap = {
     },
     {
       id: "11350695",
-      label: "상계6•7동",
+      label: "상계6·7동",
       lat: 37.654919,
       lng: 127.066919,
     },

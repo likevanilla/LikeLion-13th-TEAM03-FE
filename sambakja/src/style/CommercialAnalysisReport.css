@@ -24,8 +24,8 @@
 .Content {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  margin-left: 20px;
+  /* justify-content: space-between; */
+  /* margin-left: 20px; */
 }
 
 .Content-title {
@@ -93,7 +93,7 @@
 .Locational {
   background-color: #0479af;
   max-width: 600px;
-  min-height: 300px;
+  min-height: 350px;
   border-radius: 20px;
   color: #fff;
   padding: 24px;
@@ -102,9 +102,9 @@
   box-shadow: 7px 6px 12px -7px #333;
 }
 
-.Content-description {
+/* .Content-description {
   margin-top: 40px;
-}
+} */
 
 /* 페이지 스타일 */
 
@@ -132,11 +132,10 @@
 
 /* 모바일 (768px 이하) */
 @media (max-width: 768px) {
-
-  .Report-wrapper{
-    max-width: 80%;
-    margin-left: 20px;
-    padding-top: 80px;
+  .Report-wrapper {
+    max-width: 100%;
+    /* margin-left: 20px; */
+    padding-top: 100px;
   }
 
   .Report-region {
@@ -147,7 +146,7 @@
   .Text {
     font-size: 18px;
     margin-top: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
   }
 
   .Title {
@@ -155,11 +154,22 @@
   }
 
   .Content-title {
-    font-size: 24px;
+    font-size: 23px;
+    padding-bottom: 0px;
   }
 
   .Content-description {
-    font-size: 18px;
+    font-size: 16px;
+    margin: 0 auto;
+    margin-top: 15px;
+  }
+
+  .Content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    /* width: 100%; */
   }
 
   .Back {
@@ -167,18 +177,22 @@
   }
 
   /* 각 카드 컴포넌트 */
-  .Population, .Industry-style, .Locational {
+  .Population,
+  .Industry-style,
+  .Locational {
     width: 100%;
-    min-height: 500px;
-    margin-left: 20px;
+  }
 
+  .Locational {
+    min-height: 250px;
   }
 
   /* 카드 내용 */
   .Report-grid {
     display: flex;
     flex-direction: column;
-    width: 80%;
+    width: 90%;
+    margin: 0 auto;
   }
 
   .Card-region {
