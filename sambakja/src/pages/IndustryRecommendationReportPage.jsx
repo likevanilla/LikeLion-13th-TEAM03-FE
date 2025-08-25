@@ -78,6 +78,7 @@ export default function IndustryRecommendationReport() {
                 key={i}
                 region={rec.region}
                 reason={rec.reason}
+                keyMap={{ LLM평가: "AI 평가" }}
               />
             ))
           ) : (
