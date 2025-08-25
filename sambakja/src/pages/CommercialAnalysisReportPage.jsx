@@ -57,24 +57,26 @@ export default function CommercialAnalysisReportPage() {
   }, [region]);
 
   return (
-    <div className="Report-wrapper">
+    <>
       <HeaderManager />
-      {loading && <LoadingBox />}
-      <div className="Report-region">
-        {`서울시 ${gu} ${reportData?.region || "지역 로딩 중..."}`}
-      </div>
-      <div className="Text">상권 분석 리포트 출력 완료되었어요!</div>
-      <div className="Report-grid">
-        <Population population={reportData.population} />
-
-        <div className="Right-column">
-          <Industry industry={reportData.industry} />
-          <Locational text={reportData.locational} />
+      <div className="Report-wrapper">
+        {loading && <LoadingBox />}
+        <div className="Report-region">
+          {`서울시 ${gu} ${reportData?.region || "지역 로딩 중..."}`}
         </div>
+        <div className="Text">상권 분석 리포트 출력 완료되었어요!</div>
+        <div className="Report-grid">
+          <Population population={reportData.population} />
+
+          <div className="Right-column">
+            <Industry industry={reportData.industry} />
+            <Locational text={reportData.locational} />
+          </div>
+        </div>
+        <Link to="/map" className="Back">
+          다른 상권 분석 리포트를 작성해드릴까요?
+        </Link>
       </div>
-      <Link to="/map" className="Back">
-        다른 상권 분석 리포트를 작성해드릴까요?
-      </Link>
-    </div>
+    </>
   );
 }
