@@ -1,4 +1,3 @@
-import HighlightText from "./HighlightText";
 import "/src/style/CommercialAnalysisReport.css";
 
 export default function Industry({ industry = {} }) {
@@ -15,13 +14,13 @@ export default function Industry({ industry = {} }) {
         <div>
           <div className="Content-title">점포수</div>
           <div className="Content-description">
-            <HighlightText text={storeCount} />
+            <p>{storeCount}</p>
           </div>
         </div>
         <div>
           <div className="Content-title">임대료 특징</div>
           <div className="Content-description">
-            <HighlightText text={rentFeature} />
+            <p>{rentFeature}</p>
           </div>
         </div>
       </div>

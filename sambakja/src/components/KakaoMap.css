@@ -29,6 +29,10 @@
   gap: 16px;
 }
 
+.kmap-link:hover {
+  text-shadow: 2px 2px 2px gray;
+}
+
 .kmap-navInner a {
   color: #000;
   text-decoration: none;
